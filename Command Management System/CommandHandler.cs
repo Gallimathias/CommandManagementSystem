@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace CoMaS
 {
-    public class CommandHandler<TIn, TOut>
+    public class CommandHandler<TIn, TParameter, TOut>
     {
-        private Dictionary<string, Func<TIn, TOut>> mainDictionary;
-        
+        private Dictionary<TIn, Func<TParameter, TOut>> mainDictionary;
+
         public CommandHandler()
         {
-            mainDictionary = new Dictionary<string, Func<TIn, TOut>>();
+            mainDictionary = new Dictionary<TIn, Func<TParameter, TOut>>();
         }
 
-        public Func<TIn, TOut> this[string commandName]
+        public Func<TParameter, TOut> this[TIn commandName]
         {
             get
             {
-                Func<TIn, TOut> value;
+                Func<TParameter, TOut> value;
                 mainDictionary.TryGetValue(commandName, out value);
                 return value;
             }
@@ -33,8 +33,14 @@ namespace CoMaS
             }
         }
 
-        public TOut Dispatch(string commandName, TIn parameter) => mainDictionary[commandName](parameter);
+        public TOut Dispatch(TIn commandName, TParameter parameter) => mainDictionary[commandName](parameter);
 
-        public bool CommandExists(string commandName) => mainDictionary.ContainsKey(commandName);
+        public bool CommandExists(TIn commandName) => mainDictionary.ContainsKey(commandName);
     }
+
+    public class CommandHandler<TParameter, TOut> : CommandHandler<string, TParameter, TOut> { }
+
+    public class CommandHandler<TParameter> : CommandHandler<TParameter, dynamic> { }
+
+    public class CommandHandler : CommandHandler<EventHandler> { }
 }
