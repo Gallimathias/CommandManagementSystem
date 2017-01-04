@@ -23,4 +23,8 @@ namespace CoMaS
         public virtual void RaiseFinishEvent(object sender, TParameter arg) => FinishEvent?.Invoke(sender, arg);
         public virtual void RaiseWaitEvent(object sender, Func<TParameter, TOut> arg) => WaitEvent?.Invoke(sender, arg);
     }
+
+    public abstract class Command<TParameter> : Command<TParameter, dynamic> { }
+
+    public abstract class Command : Command<EventArgs, dynamic> { }
 }
