@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\CommandAttribute.cs" />
+    <Compile Include="Attributes\CommandManagerAttribute.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CommandHandler.cs" />
     <Compile Include="CommandHolder.cs" />
