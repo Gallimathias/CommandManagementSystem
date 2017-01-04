@@ -8,10 +8,9 @@ namespace CoMaS
 {
     public class CommandHandler<TIn, TParameter, TOut>
     {
-        public Queue<KeyValuePair<TIn,TParameter>> CommandQueue { get; private set; }
+        public Queue<KeyValuePair<TIn, TParameter>> CommandQueue { get; private set; }
 
         private Dictionary<TIn, CommandHolder<TIn, TParameter, TOut>> mainDictionary;
-        
 
         public CommandHandler()
         {
@@ -25,7 +24,7 @@ namespace CoMaS
             {
                 CommandHolder<TIn, TParameter, TOut> value;
                 mainDictionary.TryGetValue(commandName, out value);
-                return value.Delegate as Func<TParameter, TOut>;
+                return value.Delegate;
             }
             set
             {
@@ -33,7 +32,6 @@ namespace CoMaS
                     mainDictionary[commandName] = new CommandHolder<TIn, TParameter, TOut>(commandName, value);
                 else
                     mainDictionary.Add(commandName, new CommandHolder<TIn, TParameter, TOut>(commandName, value));
-
             }
         }
 
@@ -47,7 +45,6 @@ namespace CoMaS
             CommandQueue = new Queue<KeyValuePair<TIn, TParameter>>();
             return internalSubmit(list);
         }
-        
 
         public bool CommandExists(TIn commandName) => mainDictionary.ContainsKey(commandName);
 
@@ -56,9 +53,7 @@ namespace CoMaS
             TOut returnValue = default(TOut);
 
             foreach (var command in commands)
-            {
                 returnValue = Dispatch(command.Key, command.Value);
-            }
 
             return returnValue;
         }
