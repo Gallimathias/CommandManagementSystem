@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration(".NET 4.6.1")]
 [assembly: AssemblyCompany("www.gallimathias.de")]
 [assembly: AssemblyProduct("Command Management System")]
-[assembly: AssemblyCopyright("Copyright © gallimathias 2016")]
+[assembly: AssemblyCopyright("Copyright © All rights reserved 2016")]
 
 // Durch Festlegen von ComVisible auf "false" werden die Typen in dieser Assembly unsichtbar 
 // für COM-Komponenten.  Wenn Sie auf einen Typ in dieser Assembly von 
