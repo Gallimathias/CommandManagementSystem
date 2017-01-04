@@ -8,13 +8,15 @@ namespace CoMaS.Interfaces
     {
         Func<TParameter, TOut> NextFunction { get; }
         bool Finished { get; }
+        object TAG { get; set; }
 
         event WaitEventHandler<TParameter, TOut> WaitEvent;
         event FinishEventHandler<TParameter> FinishEvent;
 
         void RaiseWaitEvent(object sender, Func<TParameter, TOut> arg);
-        void RaiseFinishEvent(object sender, TParameter e);
+        void RaiseFinishEvent(object sender, TParameter arg);
 
-        TOut Dispatch(TParameter parameter);
+        TOut Dispatch(TParameter arg);
+        TOut Initialize(TParameter arg);
     }
 }
