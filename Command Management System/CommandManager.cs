@@ -1,8 +1,10 @@
-﻿using CoMaS.Interfaces;
+﻿using CoMaS.Attributes;
+using CoMaS.Interfaces;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,7 +28,16 @@ namespace CoMaS
 
         public virtual void Initialize()
         {
-            throw new NotImplementedException();
+            var commandNamespace = GetType().GetCustomAttribute<CommandManagerAttribute>().CommandNamespaces;
+
+            var commands = Assembly.GetExecutingAssembly().GetTypes().Where(
+                t => t.GetCustomAttribute<CommandAttribute>() != null && commandNamespace.Contains(t.Namespace)).ToList();
+
+            foreach (var command in commands)
+            {
+                commandHandler[(TIn)command.GetCustomAttribute<CommandAttribute>().Tag] += (e)
+                    => InitializeCommand(command, e);
+            }
         }
 
         public virtual TOut Dispatch(TIn command, TParameter arg) =>
@@ -41,6 +52,16 @@ namespace CoMaS
             command.WaitEvent += Command_WaitEvent;
 
             return command.Initialize(arg);
+        }
+        public virtual TOut InitializeCommand(Type commandType, TParameter arg)
+        {
+            var command = (ICommand<TParameter, TOut>)Activator.CreateInstance(commandType);
+            return InitializeCommand(command, arg);
+        }
+        public virtual TOut InitializeCommand(Type commandType, TParameter arg, params object[] startParams)
+        {
+            var command = (ICommand<TParameter, TOut>)Activator.CreateInstance(commandType, startParams);
+            return InitializeCommand(command, arg);
         }
 
         public virtual void Command_FinishEvent(object sender, TParameter arg)
