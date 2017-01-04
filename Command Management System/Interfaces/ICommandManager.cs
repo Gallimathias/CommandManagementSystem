@@ -9,6 +9,6 @@ namespace CoMaS.Interfaces
     public interface ICommandManager<TIn, TParameter, TOut>
     {
         TOut Dispatch(TIn command, TParameter arg);
-        TOut DispatchAsync(TIn command, TParameter arg);
+        Task<TOut> DispatchAsync(TIn command, TParameter arg);
     }
 }

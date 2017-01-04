@@ -29,15 +29,11 @@ namespace CoMaS
             throw new NotImplementedException();
         }
 
-        public TOut Dispatch(TIn command, TParameter arg)
-        {
-            throw new NotImplementedException();
-        }
+        public virtual TOut Dispatch(TIn command, TParameter arg) =>
+            commandHandler.Dispatch(command, arg);
 
-        public TOut DispatchAsync(TIn command, TParameter arg)
-        {
-            throw new NotImplementedException();
-        }
+        public virtual async Task<TOut> DispatchAsync(TIn command, TParameter arg) =>
+            await Task.Run(() => Dispatch(command, arg));
 
         public virtual TOut InitializeCommand(ICommand<TParameter, TOut> command, TParameter arg)
         {
