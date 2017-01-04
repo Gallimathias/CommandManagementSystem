@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CoMaS
 {
-    public class CommandHolder<TID, TArgs, TReturnValue>
+    internal class CommandHolder<TID, TArgs, TReturnValue>
     {
         public Func<TArgs, TReturnValue> Delegate { get; set; }
         public int NeedPower { get; set; }
@@ -28,7 +28,7 @@ namespace CoMaS
         }
     }
 
-    public class CommandHolder<TArgs, TReturnValue> : CommandHolder<string, TArgs, TReturnValue>
+    internal class CommandHolder<TArgs, TReturnValue> : CommandHolder<string, TArgs, TReturnValue>
     {
         public CommandHolder(string id) : base(id) { }
 
@@ -38,7 +38,7 @@ namespace CoMaS
 
     }
 
-    public class CommandHolder<TArgs> : CommandHolder<TArgs, dynamic>
+    internal class CommandHolder<TArgs> : CommandHolder<TArgs, dynamic>
     {
         public CommandHolder(string id) : base(id) { }
         public CommandHolder(string id, Func<TArgs, dynamic> func) : base(id, func) { }
@@ -46,7 +46,7 @@ namespace CoMaS
         public CommandHolder(string id, Func<TArgs, dynamic> func, int priority) : base(id, func, priority) { }
     }
 
-    public class CommandHolder : CommandHolder<EventArgs>
+    internal class CommandHolder : CommandHolder<EventArgs>
     {
         public CommandHolder(string id) : base(id) { }
 
