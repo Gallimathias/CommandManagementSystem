@@ -82,4 +82,10 @@ namespace CoMaS
                 waitingDictionary.TryUpdate((TIn)command.TAG, arg, arg);
         }
     }
+
+    public abstract class CommandManager<TParameter, TOut> : CommandManager<string, TParameter, TOut> { }
+
+    public abstract class CommandManager<TParameter> : CommandManager<TParameter, dynamic> { }
+
+    public abstract class CommandManager : CommandManager<EventArgs> { }
 }
