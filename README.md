@@ -1,4 +1,4 @@
-# CommandManagementSystem
+# Command Management System
 
 [![alt text](https://img.shields.io/badge/master-1.0.0-green.svg?style=flat-square)](https://github.com/Gallimathias/CommandManagementSystem) [![alt text](https://img.shields.io/badge/nuget-1.0.0-green.svg?style=flat-square)](https://www.nuget.org/packages/CommandManagementSystem/) [![alt text](https://img.shields.io/badge/Creative Commons-4.0--BY--NC--SA-lightgrey.svg?style=flat-square)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
