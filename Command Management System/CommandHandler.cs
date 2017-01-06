@@ -41,7 +41,7 @@ namespace CoMaS
             {
                 CommandHolder<TIn, TParameter, TOut> value;
                 mainDictionary.TryGetValue(commandName, out value);
-                return value.Delegate;
+                return value?.Delegate;
             }
             set
             {
