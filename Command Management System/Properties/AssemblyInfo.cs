@@ -7,10 +7,22 @@ using System.Runtime.InteropServices;
 // die einer Assembly zugeordnet sind.
 [assembly: AssemblyTitle("Command Management System")]
 [assembly: AssemblyDescription("A system for executable and extensible commands as events")]
+#region AssemblyConfiguration
+#if V461
 [assembly: AssemblyConfiguration(".NET 4.6.1")]
+#elif V46
+[assembly: AssemblyConfiguration(".NET 4.6")]
+#elif V452
+[assembly: AssemblyConfiguration(".NET 4.5.2")]
+#elif V451
+[assembly: AssemblyConfiguration(".NET 4.5.1")]
+#elif V45
+[assembly: AssemblyConfiguration(".NET 4.5")]
+#endif
+#endregion AssemblyConfiguration
 [assembly: AssemblyCompany("www.gallimathias.de")]
 [assembly: AssemblyProduct("Command Management System")]
-[assembly: AssemblyCopyright("Copyright © All rights reserved 2016")]
+[assembly: AssemblyCopyright("Copyright © All rights reserved 2017")]
 
 // Durch Festlegen von ComVisible auf "false" werden die Typen in dieser Assembly unsichtbar 
 // für COM-Komponenten.  Wenn Sie auf einen Typ in dieser Assembly von 
@@ -31,5 +43,5 @@ using System.Runtime.InteropServices;
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyFileVersion("1.0.d9e4a58.04012017")]
-[assembly: AssemblyInformationalVersion("Helmuth von Moltke 1.0.0")]
+[assembly: AssemblyFileVersion("1.0.1514b02.06.01.2017")]
+[assembly: AssemblyInformationalVersion("Helmuth von Moltke 1.0.1")]
