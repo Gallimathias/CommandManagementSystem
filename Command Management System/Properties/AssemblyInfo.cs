@@ -8,7 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Command Management System")]
 [assembly: AssemblyDescription("A system for executable and extensible commands as events")]
 #region AssemblyConfiguration
-#if V461
+#if V462
+[assembly: AssemblyConfiguration(".NET 4.6.2")]
+#elif V461
 [assembly: AssemblyConfiguration(".NET 4.6.1")]
 #elif V46
 [assembly: AssemblyConfiguration(".NET 4.6")]
