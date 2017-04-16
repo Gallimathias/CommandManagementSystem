@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoMaS
+namespace CommandManagementSystem
 {
     internal class CommandHolder<TID, TArgs, TReturnValue>
     {

@@ -1,5 +1,5 @@
-﻿using CoMaS.Attributes;
-using CoMaS.Interfaces;
+﻿using CommandManagementSystem.Attributes;
+using CommandManagementSystem.Interfaces;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoMaS
+namespace CommandManagementSystem
 {
     /// <summary>
     /// An abstract base implementation of a command manager

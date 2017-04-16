@@ -1,11 +1,11 @@
-﻿using CoMaS.Interfaces;
+﻿using CommandManagementSystem.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoMaS
+namespace CommandManagementSystem
 {
     /// <summary>
     /// An abstract standard implementation of a command

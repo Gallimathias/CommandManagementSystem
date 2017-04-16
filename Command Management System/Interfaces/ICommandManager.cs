@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoMaS.Interfaces
+namespace CommandManagementSystem.Interfaces
 {
     /// <summary>
     /// Interface for command managers

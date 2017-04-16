@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoMaS
+namespace CommandManagementSystem
 {
     /// <summary>
     /// Manages individual commands as events

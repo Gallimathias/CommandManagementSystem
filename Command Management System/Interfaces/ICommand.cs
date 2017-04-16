@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CoMaS.Interfaces
+namespace CommandManagementSystem.Interfaces
 {
     /// <summary>
     /// Delegate for command waiting events
