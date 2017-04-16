@@ -1,6 +1,6 @@
 # Command Management System
 
-[![alt text](https://img.shields.io/badge/master-1.0.1-green.svg?style=flat-square)](https://github.com/Gallimathias/CommandManagementSystem) [![alt text](https://img.shields.io/badge/nuget-1.0.1-green.svg?style=flat-square)](https://www.nuget.org/packages/CommandManagementSystem/) [![alt text](https://img.shields.io/badge/Creative Commons-4.0--BY--NC--SA-lightgrey.svg?style=flat-square)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
+[![alt text](https://img.shields.io/badge/master-1.0.1-green.svg?style=flat-square)](https://github.com/Gallimathias/CommandManagementSystem) [![alt text](https://img.shields.io/badge/nuget-1.0.1-green.svg?style=flat-square)](https://www.nuget.org/packages/CommandManagementSystem/) [![alt text](https://img.shields.io/badge/develop-2.0-orange.svg?style=flat-square)](https://github.com/Gallimathias/CommandManagementSystem/tree/develop) [![alt text](https://img.shields.io/badge/license-CC_4.0_BY--NC--SA-lightgrey.svg?style=flat-square)](http://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ---
 
