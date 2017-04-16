@@ -47,6 +47,8 @@ namespace CommandManagementSystem.Interfaces
         /// </summary>
         event FinishEventHandler<TParameter> FinishEvent;
 
+        TOut Main(TParameter arg);
+
         /// <summary>
         /// Raises the wait event
         /// </summary>

@@ -17,7 +17,7 @@ namespace CommandManagementSystem
         /// <summary>
         /// Contains the delegates for the next function to execute
         /// </summary>
-        public Func<TParameter, TOut> NextFunction { get; set; }
+        public Func<TParameter, TOut> NextFunction { get; protected set; }
         /// <summary>
         /// Returns whether the command has already gone through all steps
         /// </summary>
@@ -35,6 +35,17 @@ namespace CommandManagementSystem
         /// Is thrown when the command waits for the next dispatch
         /// </summary>
         public virtual event WaitEventHandler<TParameter, TOut> WaitEvent;
+
+        public Command()
+        {
+            NextFunction = Main;
+        }
+
+        public virtual TOut Main(TParameter arg)
+        {
+            return default(TOut);
+        }
+
 
         /// <summary>
         /// Executes the next action in the command
