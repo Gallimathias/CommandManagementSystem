@@ -8,7 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Command Management System")]
 [assembly: AssemblyDescription("A system for executable and extensible commands as events")]
 #region AssemblyConfiguration
-#if V462
+#if V47
+[assembly: AssemblyConfiguration(".NET 4.7")]
+#elif V462
 [assembly: AssemblyConfiguration(".NET 4.6.2")]
 #elif V461
 [assembly: AssemblyConfiguration(".NET 4.6.1")]
@@ -44,6 +46,6 @@ using System.Runtime.InteropServices;
 // Sie können alle Werte angeben oder die standardmäßigen Build- und Revisionsnummern 
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyFileVersion("1.0.1514b02.06.01.2017")]
-[assembly: AssemblyInformationalVersion("Helmuth von Moltke 1.0.1")]
+[assembly: AssemblyVersion("2.0.*")]
+[assembly: AssemblyFileVersion("2.0-alpha")] //2.0.1514b02.06.01.2017
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - alpha")]
