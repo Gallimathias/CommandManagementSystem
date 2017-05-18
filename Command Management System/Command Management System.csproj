@@ -121,6 +121,7 @@
     <Compile Include="Attributes\CommandAttribute.cs" />
     <Compile Include="Attributes\CommandManagerAttribute.cs" />
     <Compile Include="Attributes\NextAttribute.cs" />
+    <Compile Include="Attributes\OneTimeCommandAttribute.cs" />
     <Compile Include="Command.cs" />
     <Compile Include="CommandHandler.cs" />
     <Compile Include="CommandHolder.cs" />
