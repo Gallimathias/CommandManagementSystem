@@ -65,8 +65,9 @@ namespace CommandManagementSystem
 
             foreach (var command in commands)
             {
+                command.GetMethod("Registration").Invoke(null, null);
                 commandHandler[(TIn)command.GetCustomAttribute<CommandAttribute>().Tag] += (e)
-                    => InitializeCommand(command, e);
+                    => InitializeCommand(command, e);                
             }
         }
 

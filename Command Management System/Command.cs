@@ -16,7 +16,7 @@ namespace CommandManagementSystem
     /// <typeparam name="TOut">The data type of the dispatchresponse</typeparam>
     public abstract class Command<TParameter, TOut> : ICommand<TParameter, TOut>
     {
-        public static string[] ExecutionOrder { get; protected set; }
+        public static MethodInfo[] ExecutionOrder { get; protected set; }
         public static bool Registered => registered && ExecutionOrder != null && ExecutionOrder?.Length > 0;
         private static bool registered;
         protected int executionCount;
@@ -62,8 +62,8 @@ namespace CommandManagementSystem
         public virtual TOut Dispatch(TParameter arg)
         {
             if (Registered)
-                NextFunction = (Func<TParameter, TOut>)Delegate.CreateDelegate(
-                    typeof(Func<TParameter, TOut>), this, ExecutionOrder[executionCount]);
+                NextFunction = (Func<TParameter, TOut>)ExecutionOrder[executionCount].
+                    CreateDelegate(typeof(Func<TParameter, TOut>), this);
             else
                 NextFunction = Main;
 
@@ -74,7 +74,7 @@ namespace CommandManagementSystem
                     RaiseWaitEvent(this, Dispatch);
                 else
                     NextFunction = null;
-            
+
             if (NextFunction == null)
                 RaiseFinishEvent(this, arg);
 
@@ -112,7 +112,7 @@ namespace CommandManagementSystem
 
             var list = new List<KeyValuePair<NextAttribute, MemberInfo>>();
 
-            ExecutionOrder = new string[actions.Length];
+            ExecutionOrder = new MethodInfo[actions.Length];
 
             for (int i = 0; i < actions.Length; i++)
             {
@@ -123,7 +123,7 @@ namespace CommandManagementSystem
             list.OrderBy(b => b.Key.Order);
 
             for (int i = 0; i < list.Count; i++)
-                ExecutionOrder[i] = list[i].Value.Name;
+                ExecutionOrder[i] = (MethodInfo)list[i].Value;
 
 
             registered = true;
