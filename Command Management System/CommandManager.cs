@@ -67,8 +67,10 @@ namespace CommandManagementSystem
             {
                 command.GetMethod("Registration").Invoke(null, null);
                 commandHandler[(TIn)command.GetCustomAttribute<CommandAttribute>().Tag] += (e)
-                    => InitializeCommand(command, e);                
+                    => InitializeCommand(command, e);
             }
+
+            InitializeOneTimeCommand(commandNamespace);
         }
 
         /// <summary>
@@ -153,6 +155,23 @@ namespace CommandManagementSystem
 
             if (!waitingDictionary.TryAdd((TIn)command.TAG, arg))
                 waitingDictionary.TryUpdate((TIn)command.TAG, arg, arg);
+        }
+
+        private void InitializeOneTimeCommand(string[] namespaces)
+        {
+            var types = Assembly.GetExecutingAssembly().GetTypes().Where(
+                t => namespaces.Contains(t.Namespace)).ToArray();
+
+            for (int i = 0; i < types.Length; i++)
+            {
+                var members = types[i].GetMembers().Where(m => m.GetCustomAttribute<OneTimeCommandAttribute>() != null);
+                foreach (var member in members)
+                {
+                    commandHandler[(TIn)member.GetCustomAttribute<OneTimeCommandAttribute>().Tag] += (Func<TParameter, TOut>)(
+                        (MethodInfo)member).CreateDelegate(typeof(Func<TParameter, TOut>));
+                }
+
+            }
         }
     }
 
