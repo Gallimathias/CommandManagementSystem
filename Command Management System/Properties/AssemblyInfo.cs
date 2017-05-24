@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
 [assembly: AssemblyTitle("Command Management System-alpha")]
-[assembly: AssemblyDescription("A system for executable and extensible commands as events. Das ist eine Alpha version die sich noch in entwicklung befindet. Bitte Melde fehler auf GitHub.")]
+[assembly: AssemblyDescription("A system for executable and extensible commands as events. This is an alpha version which is still in development. Please report error on GitHub.")]
 #region AssemblyConfiguration
 #if V47
 [assembly: AssemblyConfiguration(".NET 4.7")]
