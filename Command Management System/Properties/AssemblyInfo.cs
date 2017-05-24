@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden 
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
-[assembly: AssemblyTitle("Command Management System")]
-[assembly: AssemblyDescription("A system for executable and extensible commands as events")]
+[assembly: AssemblyTitle("Command Management System-alpha")]
+[assembly: AssemblyDescription("A system for executable and extensible commands as events. This is an alpha version which is still in development. Please report error on GitHub.")]
 #region AssemblyConfiguration
 #if V47
 [assembly: AssemblyConfiguration(".NET 4.7")]
@@ -25,7 +25,7 @@ using System.Runtime.InteropServices;
 #endif
 #endregion AssemblyConfiguration
 [assembly: AssemblyCompany("www.gallimathias.de")]
-[assembly: AssemblyProduct("Command Management System")]
+[assembly: AssemblyProduct("Command Management System-alpha")]
 [assembly: AssemblyCopyright("Copyright © All rights reserved 2017")]
 
 // Durch Festlegen von ComVisible auf "false" werden die Typen in dieser Assembly unsichtbar 
@@ -47,5 +47,5 @@ using System.Runtime.InteropServices;
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2.0.*")]
-[assembly: AssemblyFileVersion("2.0-alpha")] //2.0.1514b02.06.01.2017
-[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - alpha")]
+[assembly: AssemblyFileVersion("2.0-alpha.1")] //2.0.1514b02.06.01.2017
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - alpha 1")]
