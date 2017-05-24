@@ -157,7 +157,7 @@ namespace CommandManagementSystem
                 waitingDictionary.TryUpdate((TIn)command.TAG, arg, arg);
         }
 
-        private void InitializeOneTimeCommand(string[] namespaces)
+        protected void InitializeOneTimeCommand(string[] namespaces)
         {
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(
                 t => namespaces.Contains(t.Namespace)).ToArray();
