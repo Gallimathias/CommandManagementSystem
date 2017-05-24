@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CoMaS.Interfaces
+namespace CommandManagementSystem.Interfaces
 {
     /// <summary>
     /// Delegate for command waiting events
@@ -46,6 +46,8 @@ namespace CoMaS.Interfaces
         /// Is thrown when the command has gone through all steps
         /// </summary>
         event FinishEventHandler<TParameter> FinishEvent;
+
+        TOut Main(TParameter arg);
 
         /// <summary>
         /// Raises the wait event

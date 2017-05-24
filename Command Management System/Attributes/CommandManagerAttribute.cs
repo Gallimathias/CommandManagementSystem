@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoMaS.Attributes
+namespace CommandManagementSystem.Attributes
 {
     /// <summary>
     /// Describes a class as command manager

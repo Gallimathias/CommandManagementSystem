@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CoMaS
+namespace CommandManagementSystem
 {
     /// <summary>
     /// Manages individual commands as events
@@ -17,17 +18,18 @@ namespace CoMaS
         /// <summary>
         /// Commands waiting for a submit
         /// </summary>
-        public Queue<KeyValuePair<TIn, TParameter>> CommandQueue { get; private set; }
+        public ConcurrentQueue<KeyValuePair<TIn, TParameter>> CommandQueue { get; private set; }
 
-        private Dictionary<TIn, CommandHolder<TIn, TParameter, TOut>> mainDictionary;
+        private ConcurrentDictionary<TIn, CommandHolder<TIn, TParameter, TOut>> mainDictionary;
+        private object commandQueueLock;
 
         /// <summary>
         /// Manages individual commands as events
         /// </summary>
         public CommandHandler()
         {
-            mainDictionary = new Dictionary<TIn, CommandHolder<TIn, TParameter, TOut>>();
-            CommandQueue = new Queue<KeyValuePair<TIn, TParameter>>();
+            mainDictionary = new ConcurrentDictionary<TIn, CommandHolder<TIn, TParameter, TOut>>();
+            CommandQueue = new ConcurrentQueue<KeyValuePair<TIn, TParameter>>();
         }
 
         /// <summary>
@@ -46,9 +48,11 @@ namespace CoMaS
             set
             {
                 if (mainDictionary.ContainsKey(commandName))
-                    mainDictionary[commandName] = new CommandHolder<TIn, TParameter, TOut>(commandName, value);
+                    mainDictionary.TryUpdate(commandName,
+                        new CommandHolder<TIn, TParameter, TOut>(commandName, value),
+                        mainDictionary[commandName]);
                 else
-                    mainDictionary.Add(commandName, new CommandHolder<TIn, TParameter, TOut>(commandName, value));
+                    mainDictionary.TryAdd(commandName, new CommandHolder<TIn, TParameter, TOut>(commandName, value));
             }
         }
 
@@ -73,9 +77,16 @@ namespace CoMaS
         /// <returns>Returns the set value</returns>
         public TOut Submit()
         {
-            var list = CommandQueue.ToList();
-            CommandQueue = new Queue<KeyValuePair<TIn, TParameter>>();
-            return internalSubmit(list);
+            TOut returnValue = default(TOut);
+
+            while (!CommandQueue.IsEmpty)
+            {
+                var command = new KeyValuePair<TIn, TParameter>();
+                if (CommandQueue.TryDequeue(out command))
+                    returnValue = Dispatch(command.Key, command.Value);
+            }
+
+            return returnValue;
         }
 
         /// <summary>
@@ -85,15 +96,6 @@ namespace CoMaS
         /// <returns>Returns a true if the command is already registered</returns>
         public bool CommandExists(TIn commandName) => mainDictionary.ContainsKey(commandName);
 
-        private TOut internalSubmit(List<KeyValuePair<TIn, TParameter>> commands)
-        {
-            TOut returnValue = default(TOut);
-
-            foreach (var command in commands)
-                returnValue = Dispatch(command.Key, command.Value);
-
-            return returnValue;
-        }
     }
 
     /// <summary>
