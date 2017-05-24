@@ -1,5 +1,6 @@
 ﻿using CommandManagementSystem.Attributes;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -8,11 +9,19 @@ using System.Threading.Tasks;
 
 namespace CommandManagementSystem
 {
-    public abstract class DefaultCommandManager : CommandManager<string, EventArgs, object>
+    public class DefaultCommandManager : CommandManager<string, EventArgs, object>
     {
-        public static List<string> Namespaces { get; private set; }
+        public List<string> Namespaces { get; private set; }
 
-        private static DefaultCommandManager defaultCommandManager;
+        public bool IsInitialized { get; private set; }
+
+        public DefaultCommandManager(params string[] namespaces) 
+        {
+            commandHandler = new CommandHandler<string, EventArgs, object>();
+            waitingDictionary = new ConcurrentDictionary<string, Func<EventArgs, object>>();
+            Namespaces = new List<string>();
+            Initialize(namespaces);
+        }
 
         public new void Initialize(params string[] namespaces)
         {
@@ -31,7 +40,8 @@ namespace CommandManagementSystem
                     => InitializeCommand(command, e);
             }
 
-            base.InitializeOneTimeCommand(Namespaces.ToArray());
+            InitializeOneTimeCommand(Namespaces.ToArray());
+            IsInitialized = true;
         }
 
     }
