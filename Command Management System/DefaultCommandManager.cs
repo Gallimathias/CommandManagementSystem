@@ -9,16 +9,17 @@ using System.Threading.Tasks;
 
 namespace CommandManagementSystem
 {
-    public class DefaultCommandManager : CommandManager<string, EventArgs, object>
+    [CommandManager("DefaultCommandManager")]
+    public class DefaultCommandManager : CommandManager<string, object[], dynamic>
     {
         public List<string> Namespaces { get; private set; }
 
         public bool IsInitialized { get; private set; }
 
-        public DefaultCommandManager(params string[] namespaces) 
+        public DefaultCommandManager(params string[] namespaces)
         {
-            commandHandler = new CommandHandler<string, EventArgs, object>();
-            waitingDictionary = new ConcurrentDictionary<string, Func<EventArgs, object>>();
+            commandHandler = new CommandHandler<string, object[], dynamic>();
+            waitingDictionary = new ConcurrentDictionary<string, Func<object[], dynamic>>();
             Namespaces = new List<string>();
             Initialize(namespaces);
         }
@@ -30,7 +31,7 @@ namespace CommandManagementSystem
 
             Namespaces.AddRange(namespaces);
 
-            var commands = Assembly.GetExecutingAssembly().GetTypes().Where(
+            var commands = Assembly.GetAssembly(GetType()).GetTypes().Where(
                t => t.GetCustomAttribute<CommandAttribute>() != null && Namespaces.Contains(t.Namespace)).ToList();
 
             foreach (var command in commands)
@@ -44,5 +45,10 @@ namespace CommandManagementSystem
             IsInitialized = true;
         }
 
+        public override void Initialize()
+        {
+            return;
+            //base.Initialize();
+        }
     }
 }
