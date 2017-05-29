@@ -113,20 +113,20 @@ namespace CommandManagementSystem
                     BindingFlags.Static |
                     BindingFlags.FlattenHierarchy)?
                 .Where(
-                    m => m.GetCustomAttribute<NextAttribute>() != null)?
+                    m => m.GetCustomAttribute<DispatchOrderAttribute>() != null)?
                 .ToArray();
 
             if (actions == null || actions?.Length == 0)
                 return;
 
-            var list = new List<KeyValuePair<NextAttribute, MemberInfo>>();
+            var list = new List<KeyValuePair<DispatchOrderAttribute, MemberInfo>>();
 
             ExecutionOrder = new MethodInfo[actions.Length];
 
             for (int i = 0; i < actions.Length; i++)
             {
-                var attr = actions[i].GetCustomAttribute<NextAttribute>();
-                list.Add(new KeyValuePair<NextAttribute, MemberInfo>(attr, actions[i]));
+                var attr = actions[i].GetCustomAttribute<DispatchOrderAttribute>();
+                list.Add(new KeyValuePair<DispatchOrderAttribute, MemberInfo>(attr, actions[i]));
             }
 
             list.OrderBy(b => b.Key.Order);
