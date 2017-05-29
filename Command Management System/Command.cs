@@ -19,6 +19,7 @@ namespace CommandManagementSystem
         public static MethodInfo[] ExecutionOrder { get; protected set; }
         public static bool Registered => registered && ExecutionOrder != null && ExecutionOrder?.Length > 0;
         private static bool registered;
+        private static object tag;
         protected int executionCount;
 
         /// <summary>
@@ -32,7 +33,7 @@ namespace CommandManagementSystem
         /// <summary>
         /// Unique Indentifikator for the command
         /// </summary>
-        public virtual object TAG { get; set; }
+        public virtual object TAG => tag;
 
         /// <summary>
         /// Is thrown when the command has gone through all steps
@@ -48,11 +49,7 @@ namespace CommandManagementSystem
             executionCount = 0;
         }
 
-        public virtual TOut Main(TParameter arg)
-        {
-            NextFunction = null;
-            return default(TOut);
-        }
+        public virtual TOut Main(TParameter arg) => default(TOut);        
 
         /// <summary>
         /// Executes the next action in the command
@@ -74,6 +71,8 @@ namespace CommandManagementSystem
                     RaiseWaitEvent(this, Dispatch);
                 else
                     NextFunction = null;
+            else
+                NextFunction = null;
 
             if (NextFunction == null)
                 RaiseFinishEvent(this, arg);
@@ -102,22 +101,32 @@ namespace CommandManagementSystem
         /// <param name="arg">The dispatch method</param>
         public virtual void RaiseWaitEvent(object sender, Func<TParameter, TOut> arg) => WaitEvent?.Invoke(sender, arg);
 
-        public static void Registration()
+        public static void Register(Type type)
         {
-            var actions = MethodBase.GetCurrentMethod().DeclaringType.GetMembers()?.Where(
-                m => m.GetCustomAttribute<NextAttribute>() != null)?.ToArray();
+            tag = type?.GetCustomAttribute<CommandAttribute>()?.Tag;
+
+            var actions = type?
+                .GetMembers(
+                    BindingFlags.NonPublic |
+                    BindingFlags.Public |
+                    BindingFlags.Instance |
+                    BindingFlags.Static |
+                    BindingFlags.FlattenHierarchy)?
+                .Where(
+                    m => m.GetCustomAttribute<DispatchOrderAttribute>() != null)?
+                .ToArray();
 
             if (actions == null || actions?.Length == 0)
                 return;
 
-            var list = new List<KeyValuePair<NextAttribute, MemberInfo>>();
+            var list = new List<KeyValuePair<DispatchOrderAttribute, MemberInfo>>();
 
             ExecutionOrder = new MethodInfo[actions.Length];
 
             for (int i = 0; i < actions.Length; i++)
             {
-                var attr = actions[i].GetCustomAttribute<NextAttribute>();
-                list.Add(new KeyValuePair<NextAttribute, MemberInfo>(attr, actions[i]));
+                var attr = actions[i].GetCustomAttribute<DispatchOrderAttribute>();
+                list.Add(new KeyValuePair<DispatchOrderAttribute, MemberInfo>(attr, actions[i]));
             }
 
             list.OrderBy(b => b.Key.Order);
