@@ -66,8 +66,11 @@ namespace CommandManagementSystem
             foreach (var command in commands)
             {
                 command.GetMethod(
-                    "Register", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy)
-                    .Invoke(null, null);
+                    "Register",
+                    BindingFlags.Static |
+                    BindingFlags.Public |
+                    BindingFlags.FlattenHierarchy)
+                    .Invoke(null, new[] { command });
                 commandHandler[(TIn)command.GetCustomAttribute<CommandAttribute>().Tag] += (e)
                     => InitializeCommand(command, e);
             }
@@ -164,9 +167,17 @@ namespace CommandManagementSystem
             var commandClasses = types.Where(
                 t => namespaces.Contains(t.Namespace)).ToArray();
 
-            foreach(var commandClass in commandClasses)
+            foreach (var commandClass in commandClasses)
             {
-                var members = commandClass.GetMembers().Where(m => m.GetCustomAttribute<OneTimeCommandAttribute>() != null);
+                var members = commandClass.GetMembers(
+                        BindingFlags.NonPublic |
+                        BindingFlags.Public |
+                        BindingFlags.Instance |
+                        BindingFlags.FlattenHierarchy |
+                        BindingFlags.Static)
+                    .Where(
+                        m => m.GetCustomAttribute<OneTimeCommandAttribute>() != null);
+
                 foreach (var member in members)
                 {
                     commandHandler[(TIn)member.GetCustomAttribute<OneTimeCommandAttribute>().Tag] += (Func<TParameter, TOut>)(
@@ -175,7 +186,7 @@ namespace CommandManagementSystem
 
             }
         }
-        protected void InitializeOneTimeCommand(string[] namespaces) =>        
+        protected void InitializeOneTimeCommand(string[] namespaces) =>
             InitializeOneTimeCommand(namespaces, Assembly.GetAssembly(GetType()).GetTypes());
         protected void InitializeOneTimeCommand() =>
             InitializeOneTimeCommand(GetType().GetCustomAttribute<CommandManagerAttribute>().CommandNamespaces);
