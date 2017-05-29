@@ -102,7 +102,7 @@ namespace CommandManagementSystem
         /// <param name="arg">The dispatch method</param>
         public virtual void RaiseWaitEvent(object sender, Func<TParameter, TOut> arg) => WaitEvent?.Invoke(sender, arg);
 
-        public static void Registration()
+        public static void Register()
         {
             var actions = MethodBase.GetCurrentMethod().DeclaringType.GetMembers()?.Where(
                 m => m.GetCustomAttribute<NextAttribute>() != null)?.ToArray();
