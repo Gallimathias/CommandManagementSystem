@@ -141,9 +141,10 @@ namespace CommandManagementSystem
         /// <param name="arg">The command parameters</param>
         public virtual void Command_FinishEvent(object sender, TParameter arg)
         {
-            Func<TParameter, TOut> method;
             var command = (ICommand<TParameter, TOut>)sender;
-            waitingDictionary.TryRemove((TIn)command.TAG, out method);
+
+            waitingDictionary.TryRemove((TIn)command.TAG, out Func<TParameter, TOut> method);
+
             OnFinishedCommand?.Invoke(command, arg);
         }
 
@@ -156,6 +157,7 @@ namespace CommandManagementSystem
         {
             if (arg == null && sender == null)
                 return;
+
             var command = (ICommand<TParameter, TOut>)sender;
 
             if (!waitingDictionary.TryAdd((TIn)command.TAG, arg))

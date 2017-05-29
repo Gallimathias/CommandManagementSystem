@@ -19,6 +19,7 @@ namespace CommandManagementSystem
         public static MethodInfo[] ExecutionOrder { get; protected set; }
         public static bool Registered => registered && ExecutionOrder != null && ExecutionOrder?.Length > 0;
         private static bool registered;
+        private static object tag;
         protected int executionCount;
 
         /// <summary>
@@ -32,7 +33,7 @@ namespace CommandManagementSystem
         /// <summary>
         /// Unique Indentifikator for the command
         /// </summary>
-        public virtual object TAG { get; set; }
+        public virtual object TAG => tag;
 
         /// <summary>
         /// Is thrown when the command has gone through all steps
@@ -102,6 +103,8 @@ namespace CommandManagementSystem
 
         public static void Register(Type type)
         {
+            tag = type?.GetCustomAttribute<CommandAttribute>()?.Tag;
+
             var actions = type?
                 .GetMembers(
                     BindingFlags.NonPublic |
