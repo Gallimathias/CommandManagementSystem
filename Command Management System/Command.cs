@@ -48,11 +48,7 @@ namespace CommandManagementSystem
             executionCount = 0;
         }
 
-        public virtual TOut Main(TParameter arg)
-        {
-            NextFunction = null;
-            return default(TOut);
-        }
+        public virtual TOut Main(TParameter arg) => default(TOut);        
 
         /// <summary>
         /// Executes the next action in the command
@@ -74,6 +70,8 @@ namespace CommandManagementSystem
                     RaiseWaitEvent(this, Dispatch);
                 else
                     NextFunction = null;
+            else
+                NextFunction = null;
 
             if (NextFunction == null)
                 RaiseFinishEvent(this, arg);
