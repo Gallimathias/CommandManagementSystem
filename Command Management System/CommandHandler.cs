@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommandManagementSystem
 {
@@ -21,7 +18,6 @@ namespace CommandManagementSystem
         public ConcurrentQueue<KeyValuePair<TIn, TParameter>> CommandQueue { get; private set; }
 
         private ConcurrentDictionary<TIn, CommandHolder<TIn, TParameter, TOut>> mainDictionary;
-        private object commandQueueLock;
 
         /// <summary>
         /// Manages individual commands as events
@@ -41,8 +37,7 @@ namespace CommandManagementSystem
         {
             get
             {
-                CommandHolder<TIn, TParameter, TOut> value;
-                mainDictionary.TryGetValue(commandName, out value);
+                mainDictionary.TryGetValue(commandName, out CommandHolder<TIn, TParameter, TOut> value);
                 return value?.Delegate;
             }
             set
@@ -81,8 +76,7 @@ namespace CommandManagementSystem
 
             while (!CommandQueue.IsEmpty)
             {
-                var command = new KeyValuePair<TIn, TParameter>();
-                if (CommandQueue.TryDequeue(out command))
+                if (CommandQueue.TryDequeue(out KeyValuePair<TIn, TParameter> command))
                     returnValue = Dispatch(command.Key, command.Value);
             }
 
