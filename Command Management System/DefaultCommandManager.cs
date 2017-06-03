@@ -21,17 +21,17 @@ namespace CommandManagementSystem
             commandHandler = new CommandHandler<string, object[], dynamic>();
             waitingDictionary = new ConcurrentDictionary<string, Func<object[], dynamic>>();
             Namespaces = new List<string>();
-            Initialize(namespaces);
+            Initialize(Assembly.GetCallingAssembly(), namespaces);
         }
 
-        public new void Initialize(params string[] namespaces)
+        public new void Initialize(Assembly assembly, params string[] namespaces)
         {
             if (Namespaces == null)
                 Namespaces = new List<string>();
 
             Namespaces.AddRange(namespaces);
 
-            var commands = Assembly.GetAssembly(GetType()).GetTypes().Where(
+            var commands = assembly.GetTypes().Where(
                t => t.GetCustomAttribute<CommandAttribute>() != null && Namespaces.Contains(t.Namespace)).ToList();
 
             foreach (var command in commands)
@@ -41,9 +41,10 @@ namespace CommandManagementSystem
                     => InitializeCommand(command, e);
             }
 
-            InitializeOneTimeCommand(Namespaces.ToArray());
+            InitializeOneTimeCommand(Namespaces.ToArray(), assembly.GetTypes());
             IsInitialized = true;
         }
+        public new void Initialize(params string[] namespaces) => Initialize(Assembly.GetCallingAssembly(), namespaces);
 
         public override void Initialize()
         {
