@@ -45,7 +45,9 @@ using System.Runtime.InteropServices;
 //
 // Sie können alle Werte angeben oder die standardmäßigen Build- und Revisionsnummern 
 // übernehmen, indem Sie "*" eingeben:
+#pragma warning disable CS7035 // Die angegebene Versionszeichenfolge entspricht nicht dem empfohlenen Format: Hauptversion.Nebenversion.Build.Revision
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2.0.*")]
 [assembly: AssemblyFileVersion("2.0-alpha.3")] //2.0.1514b02.06.01.2017
 [assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - alpha 3")]
+#pragma warning restore CS7035 // Die angegebene Versionszeichenfolge entspricht nicht dem empfohlenen Format: Hauptversion.Nebenversion.Build.Revision

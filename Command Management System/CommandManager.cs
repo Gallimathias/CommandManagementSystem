@@ -2,10 +2,8 @@
 using CommandManagementSystem.Interfaces;
 using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace CommandManagementSystem
@@ -44,7 +42,7 @@ namespace CommandManagementSystem
 
         /// <summary>
         /// An abstract base implementation of a command manager
-        /// </summary>
+        /// </summary>        
         public CommandManager()
         {
             commandHandler = new CommandHandler<TIn, TParameter, TOut>();
@@ -127,11 +125,9 @@ namespace CommandManagementSystem
         /// <param name="commandType">The command data type</param>
         /// <param name="arg">The parameters to be transferred</param>
         /// <returns>Returns the result of the initialize</returns>
-        public virtual TOut InitializeCommand(Type commandType, TParameter arg)
-        {
-            var command = (ICommand<TParameter, TOut>)Activator.CreateInstance(commandType);
-            return InitializeCommand(command, arg);
-        }
+        public virtual TOut InitializeCommand(Type commandType, TParameter arg) =>
+            InitializeCommand((ICommand<TParameter, TOut>)Activator.CreateInstance(commandType), arg);
+
         /// <summary>
         /// Initializes a command from the specified command datatype with
         /// the parameters and start parameters for the constructor
@@ -140,11 +136,8 @@ namespace CommandManagementSystem
         /// <param name="arg">The parameters to be transferred</param>
         /// <param name="startParams">Parameters passed to the constructor</param>
         /// <returns>Returns the result of the initialize</returns>
-        public virtual TOut InitializeCommand(Type commandType, TParameter arg, params object[] startParams)
-        {
-            var command = (ICommand<TParameter, TOut>)Activator.CreateInstance(commandType, startParams);
-            return InitializeCommand(command, arg);
-        }
+        public virtual TOut InitializeCommand(Type commandType, TParameter arg, params object[] startParams) =>
+            InitializeCommand((ICommand<TParameter, TOut>)Activator.CreateInstance(commandType, startParams), arg);
 
         /// <summary>
         /// Executed when a command is finished

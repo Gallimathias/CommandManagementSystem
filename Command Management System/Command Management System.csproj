@@ -127,6 +127,7 @@
     <Compile Include="CommandHolder.cs" />
     <Compile Include="CommandManager.cs" />
     <Compile Include="DefaultCommandManager.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Interfaces\ICommandManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

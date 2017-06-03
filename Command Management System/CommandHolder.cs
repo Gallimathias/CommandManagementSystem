@@ -1,31 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommandManagementSystem
 {
     internal class CommandHolder<TID, TArgs, TReturnValue>
     {
         public Func<TArgs, TReturnValue> Delegate { get; set; }
-        public int NeedPower { get; set; }
 
         public TID ID { get; private set; }
         public int Priority { get; private set; }
 
-        public CommandHolder(TID id)
-        {
-            ID = id;
-        }
-        public CommandHolder(TID id, Func<TArgs, TReturnValue> func) : this(id)
-        {
-            Delegate = func;
-        }
-        public CommandHolder(TID id, Func<TArgs, TReturnValue> func, int priority) : this(id, func)
-        {
-            Priority = priority;
-        }
+        public CommandHolder(TID id) => ID = id;
+
+        public CommandHolder(TID id, Func<TArgs, TReturnValue> func) : this(id) => Delegate = func;
+        public CommandHolder(TID id, Func<TArgs, TReturnValue> func, int priority) : this(id, func) => Priority = priority;
+
     }
 
     internal class CommandHolder<TArgs, TReturnValue> : CommandHolder<string, TArgs, TReturnValue>

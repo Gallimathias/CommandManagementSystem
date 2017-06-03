@@ -4,8 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CommandManagementSystem
 {
@@ -32,7 +30,7 @@ namespace CommandManagementSystem
 
         private static bool registered;
         private static object tag;
-        
+
         /// <summary>
         /// Contains the delegates for the next function to execute
         /// </summary>
@@ -58,10 +56,7 @@ namespace CommandManagementSystem
         /// <summary>
         /// An abstract standard implementation of a command
         /// </summary>
-        public Command()
-        {
-            executionCount = 0;
-        }
+        public Command() => executionCount = 0;
 
         /// <summary>
         /// The main method is executed when dispatch if no Dispatch Order attribute found in the class.
@@ -69,7 +64,7 @@ namespace CommandManagementSystem
         /// </summary>
         /// <param name="arg">The arguments passed by the dispatch</param>
         /// <returns>Returns the default value of the return type</returns>
-        public virtual TOut Main(TParameter arg) => default(TOut);        
+        public virtual TOut Main(TParameter arg) => default(TOut);
 
         /// <summary>
         /// Executes the next action in the command
@@ -87,15 +82,19 @@ namespace CommandManagementSystem
             executionCount++;
             var returnValue = NextFunction(arg);
             if (Registered)
+            {
                 if (executionCount < ExecutionOrder.Length)
                     RaiseWaitEvent(this, Dispatch);
                 else
-                    NextFunction = null;
+                    RaiseFinishEvent(this, arg);
+            }
             else
-                NextFunction = null;
-
-            if (NextFunction == null)
-                RaiseFinishEvent(this, arg);
+            {
+                if (NextFunction != null)
+                    RaiseWaitEvent(this, Dispatch);
+                else
+                    RaiseFinishEvent(this, arg);
+            }
 
             return returnValue;
         }
@@ -130,9 +129,9 @@ namespace CommandManagementSystem
 
         /// <summary>
         /// Registers the class in its static components. 
-        /// Also registers all DispatchOrderAttribute-defined methods for Dispatch.
+        /// Also registers all DispatchOrderAttribute-defined methods for Dispatch. 
         /// </summary>
-        /// <param name="type">The type of this class<param>
+        /// <param name="type">The type of this class</param>
         public static void Register(Type type)
         {
             tag = type?.GetCustomAttribute<CommandAttribute>()?.Tag;
