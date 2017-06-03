@@ -1,5 +1,6 @@
 ﻿using CommandManagementSystem;
 using CommandManagementSystem.Attributes;
+using ConsoleApp.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,6 @@ namespace ConsoleApp
         {
             Console.WriteLine("Hello");
             return null;
-        } 
+        }
     }
 }
