@@ -93,8 +93,8 @@ namespace CommandManagementSystem
         /// <param name="command">The command Indentifier</param>
         /// <param name="arg">The parameters to be transferred</param>
         /// <returns>Returns the result of the dispatch</returns>
-        public virtual async Task<TOut> DispatchAsync(TIn command, TParameter arg) =>
-            await Task.Run(() => Dispatch(command, arg));
+        public virtual Task<TOut> DispatchAsync(TIn command, TParameter arg) =>
+            Task.Run(() => Dispatch(command, arg));
 
         /// <summary>
         /// Initializes the passed command with the parameters
