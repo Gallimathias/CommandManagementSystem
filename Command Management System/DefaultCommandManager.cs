@@ -41,7 +41,7 @@ namespace CommandManagementSystem
                     => InitializeCommand(command, e);
             }
 
-            InitializeOneTimeCommand(Namespaces.ToArray());
+            InitializeOneTimeCommand(Namespaces.ToArray(), assembly.GetTypes());
             IsInitialized = true;
         }
         public new void Initialize(params string[] namespaces) => Initialize(Assembly.GetCallingAssembly(), namespaces);
