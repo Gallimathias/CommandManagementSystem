@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Command Management System, Version=2.0.6363.26672, Culture=neutral, PublicKeyToken=304a821013b0b687, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommandManagementSystem.2.0.0-alpha3\lib\net47\Command Management System.dll</HintPath>
+    <Reference Include="Command Management System, Version=2.0.7.147, Culture=neutral, PublicKeyToken=304a821013b0b687, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandManagementSystem.2.0.0-beta\lib\net47\Command Management System.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="LICENSE" />
+    <None Include="NOTICE" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
