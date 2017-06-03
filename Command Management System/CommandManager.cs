@@ -84,8 +84,20 @@ namespace CommandManagementSystem
         /// <param name="command">The command Indentifier</param>
         /// <param name="arg">The parameters to be transferred</param>
         /// <returns>Returns the result of the dispatch</returns>
-        public virtual TOut Dispatch(TIn command, TParameter arg) =>
-            commandHandler.Dispatch(command, arg);
+        public virtual TOut Dispatch(TIn command, TParameter arg)
+        {
+            if (waitingDictionary.ContainsKey(command))
+            {
+                if (!waitingDictionary.TryGetValue(command, out Func<TParameter, TOut> method))
+                    throw new Exception($"Dispatch failed to retrieve the Waiting {command} command");
+                else
+                    return method(arg);
+            }
+            else
+            {
+                return commandHandler.Dispatch(command, arg);
+            }
+        }
 
         /// <summary>
         /// Dispatch the specified command and pass the parameters asynchronous
