@@ -20,6 +20,9 @@ namespace ConsoleApp
                     throw new Exception("Command not succe");
 
             }
+
+            Console.WriteLine("Please press any key");
+            Console.ReadKey();
         }
     }
 }

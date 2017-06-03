@@ -24,12 +24,15 @@ namespace ConsoleApp.Commands
             if (arg.Length < 10)
                 return false;
 
+            Console.Write("Random: ");
+
             for (int i = 0; i < arg.Length; i++)
             {
                 var c = rand.Next(arg.Length);
                 Console.Write(arg[c]);
             }
 
+            Console.WriteLine();
             return true;
         }
 
@@ -39,11 +42,14 @@ namespace ConsoleApp.Commands
             if (arg.Length < 10)
                 return false;
 
-            for (int i = arg.Length; i > 0; i--)
+            Console.Write("Reverse: ");
+
+            for (int i = arg.Length - 1; i >= 0; i--)
             {
                 Console.Write(arg[i]);
             }
 
+            Console.WriteLine();
             return true;
         }
     }
