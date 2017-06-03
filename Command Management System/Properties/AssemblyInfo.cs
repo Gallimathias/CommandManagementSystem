@@ -2,7 +2,7 @@
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Command Management System-alpha")]
-[assembly: AssemblyDescription("A system for executable and extensible commands as events. This is an alpha version which is still in development. Please report error on GitHub.")]
+[assembly: AssemblyDescription("A system for executable and extensible commands as events. This is a beta version which is intended only for test purposes and not for production use. Please report error on GitHub.")]
 #region AssemblyConfiguration
 #if V47
 [assembly: AssemblyConfiguration(".NET 4.7")]
@@ -21,7 +21,7 @@ using System.Runtime.InteropServices;
 #endif
 #endregion AssemblyConfiguration
 [assembly: AssemblyCompany("www.gallimathias.de")]
-[assembly: AssemblyProduct("Command Management System-alpha")]
+[assembly: AssemblyProduct("Command Management System-beta")]
 [assembly: AssemblyCopyright("Copyright 2017 gallimathias. Licensed under Apache License Version 2.0.")]
 
 [assembly: ComVisible(false)]
@@ -48,29 +48,35 @@ using System.Runtime.InteropServices;
 #pragma warning disable CS7035 // The specified version string is: Major.MinorAndRevision.Build.AdditionalVersion
 #region AssemblyVersion
 #if V47
-[assembly: AssemblyVersion("2.00.7.047")]
-[assembly: AssemblyFileVersion("2.00.7.047")]
+[assembly: AssemblyVersion("2.00.7.147")]
+[assembly: AssemblyFileVersion("2.00.7.147")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_147")]
 #elif V462
-[assembly: AssemblyVersion("2.00.7.0462")]
-[assembly: AssemblyFileVersion("2.00.7.0462")]
+[assembly: AssemblyVersion("2.00.7.1462")]
+[assembly: AssemblyFileVersion("2.00.7.1462")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_1462")]
 #elif V461
-[assembly: AssemblyVersion("2.00.7.0461")]
-[assembly: AssemblyFileVersion("2.00.7.0461")]
+[assembly: AssemblyVersion("2.00.7.1461")]
+[assembly: AssemblyFileVersion("2.00.7.1461")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_1461")]
 #elif V46
-[assembly: AssemblyVersion("2.00.7.046")]
-[assembly: AssemblyFileVersion("2.00.7.046")]
+[assembly: AssemblyVersion("2.00.7.146")]
+[assembly: AssemblyFileVersion("2.00.7.146")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_146")]
 #elif V452
-[assembly: AssemblyVersion("2.00.7.0452")]
-[assembly: AssemblyFileVersion("2.00.7.0452")]
+[assembly: AssemblyVersion("2.00.7.1452")]
+[assembly: AssemblyFileVersion("2.00.7.1452")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_1452")]
 #elif V451
-[assembly: AssemblyVersion("2.00.7.0451")]
-[assembly: AssemblyFileVersion("2.00.7.0451")]
+[assembly: AssemblyVersion("2.00.7.1451")]
+[assembly: AssemblyFileVersion("2.00.7.1451")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_1451")]
 #elif V45
-[assembly: AssemblyVersion("2.00.7.045")]
-[assembly: AssemblyFileVersion("2.00.7.045")]
+[assembly: AssemblyVersion("2.00.7.145")]
+[assembly: AssemblyFileVersion("2.00.7.145")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_145")]
 #endif
 #endregion AssemblyVersion
-[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - alpha 3")]
 #pragma warning restore CS7035 // The specified version string is: Major.MinorAndRevision.Build.AdditionalVersion
 
 #region Apache License
