@@ -47,6 +47,11 @@ namespace CommandManagementSystem.Interfaces
         /// </summary>
         event FinishEventHandler<TParameter> FinishEvent;
 
+        /// <summary>
+        /// The main method is executed when dispatch if no Dispatch Order attribute found in the class.
+        /// </summary>
+        /// <param name="arg">The arguments passed by the dispatch</param>
+        /// <returns>Returns the result of the command</returns>
         TOut Main(TParameter arg);
 
         /// <summary>

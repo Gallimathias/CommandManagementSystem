@@ -176,6 +176,12 @@ namespace CommandManagementSystem
                 waitingDictionary.TryUpdate((TIn)command.TAG, arg, arg);
         }
 
+        /// <summary>
+        /// Searches and registers all methods in the given namespace in the TypeArray,
+        /// which have a OneTimeCommandAttribute as a Command.
+        /// </summary>
+        /// <param name="namespaces">Namespaces in which the method searches</param>
+        /// <param name="types">TypeArray that searches the method</param>
         protected void InitializeOneTimeCommand(string[] namespaces, Type[] types)
         {
             var commandClasses = types.Where(
@@ -200,8 +206,17 @@ namespace CommandManagementSystem
 
             }
         }
+        /// <summary>
+        /// Searches and registers all methods that have a OneTimeCommandAttribute as a command in the 
+        /// specified namespace in the assembly where the CommandManager is defined.
+        /// </summary>
+        /// <param name="namespaces">Namespaces in which the method searches</param>
         protected void InitializeOneTimeCommand(string[] namespaces) =>
             InitializeOneTimeCommand(namespaces, Assembly.GetAssembly(GetType()).GetTypes());
+        /// <summary>
+        /// Find and register all methods that has a OneTimeCommandAttribute as a command in the namespaces registered
+        /// with the manager in the assembly where the CommandManager is defined.
+        /// </summary>
         protected void InitializeOneTimeCommand() =>
             InitializeOneTimeCommand(GetType().GetCustomAttribute<CommandManagerAttribute>().CommandNamespaces);
     }

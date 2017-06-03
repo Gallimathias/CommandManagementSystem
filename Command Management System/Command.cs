@@ -16,12 +16,23 @@ namespace CommandManagementSystem
     /// <typeparam name="TOut">The data type of the dispatchresponse</typeparam>
     public abstract class Command<TParameter, TOut> : ICommand<TParameter, TOut>
     {
+        /// <summary>
+        /// The ExecutionOrder property contains all methods of the class registered
+        /// for a dispatch in the correct order of their execution
+        /// </summary>
         public static MethodInfo[] ExecutionOrder { get; protected set; }
+        /// <summary>
+        /// Returns a true if methods were registered for the dispatch in this class
+        /// </summary>
         public static bool Registered => registered && ExecutionOrder != null && ExecutionOrder?.Length > 0;
-        private static bool registered;
-        private static object tag;
+        /// <summary>
+        /// The number of executions by a dispatch
+        /// </summary>
         protected int executionCount;
 
+        private static bool registered;
+        private static object tag;
+        
         /// <summary>
         /// Contains the delegates for the next function to execute
         /// </summary>
@@ -44,11 +55,20 @@ namespace CommandManagementSystem
         /// </summary>
         public virtual event WaitEventHandler<TParameter, TOut> WaitEvent;
 
+        /// <summary>
+        /// An abstract standard implementation of a command
+        /// </summary>
         public Command()
         {
             executionCount = 0;
         }
 
+        /// <summary>
+        /// The main method is executed when dispatch if no Dispatch Order attribute found in the class.
+        /// And set the NextFunction property to NULL.
+        /// </summary>
+        /// <param name="arg">The arguments passed by the dispatch</param>
+        /// <returns>Returns the default value of the return type</returns>
         public virtual TOut Main(TParameter arg) => default(TOut);        
 
         /// <summary>
@@ -101,8 +121,18 @@ namespace CommandManagementSystem
         /// <param name="arg">The dispatch method</param>
         public virtual void RaiseWaitEvent(object sender, Func<TParameter, TOut> arg) => WaitEvent?.Invoke(sender, arg);
 
+        /// <summary>
+        /// Returns the tag of the command.
+        /// Returns the current tag of the command by calling the ToString method of the command tag.
+        /// </summary>
+        /// <returns>Returns the tag of the command</returns>
         public override string ToString() => $"{TAG}";
 
+        /// <summary>
+        /// Registers the class in its static components. 
+        /// Also registers all DispatchOrderAttribute-defined methods for Dispatch.
+        /// </summary>
+        /// <param name="type">The type of this class<param>
         public static void Register(Type type)
         {
             tag = type?.GetCustomAttribute<CommandAttribute>()?.Tag;
