@@ -47,5 +47,5 @@ using System.Runtime.InteropServices;
 // übernehmen, indem Sie "*" eingeben:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2.0.*")]
-[assembly: AssemblyFileVersion("2.0-alpha.2")] //2.0.1514b02.06.01.2017
-[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - alpha 2")]
+[assembly: AssemblyFileVersion("2.0-alpha.3")] //2.0.1514b02.06.01.2017
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - alpha 3")]

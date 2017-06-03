@@ -101,6 +101,8 @@ namespace CommandManagementSystem
         /// <param name="arg">The dispatch method</param>
         public virtual void RaiseWaitEvent(object sender, Func<TParameter, TOut> arg) => WaitEvent?.Invoke(sender, arg);
 
+        public override string ToString() => $"{TAG}";
+
         public static void Register(Type type)
         {
             tag = type?.GetCustomAttribute<CommandAttribute>()?.Tag;
