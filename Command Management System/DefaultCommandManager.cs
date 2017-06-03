@@ -18,8 +18,6 @@ namespace CommandManagementSystem
 
         public DefaultCommandManager(params string[] namespaces)
         {
-            commandHandler = new CommandHandler<string, object[], dynamic>();
-            waitingDictionary = new ConcurrentDictionary<string, Func<object[], dynamic>>();
             Namespaces = new List<string>();
             Initialize(Assembly.GetCallingAssembly(), namespaces);
         }
@@ -36,7 +34,12 @@ namespace CommandManagementSystem
 
             foreach (var command in commands)
             {
-                command.GetMethod("Registration").Invoke(null, null);
+                command.GetMethod(
+                   "Register",
+                   BindingFlags.Static |
+                   BindingFlags.Public |
+                   BindingFlags.FlattenHierarchy)
+                   .Invoke(null, new[] { command });
                 commandHandler[(string)command.GetCustomAttribute<CommandAttribute>().Tag] += (e)
                     => InitializeCommand(command, e);
             }
@@ -49,7 +52,6 @@ namespace CommandManagementSystem
         public override void Initialize()
         {
             return;
-            //base.Initialize();
         }
     }
 }
