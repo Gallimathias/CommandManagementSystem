@@ -56,8 +56,12 @@ namespace CommandManagementSystem
         /// </summary>
         public virtual void Initialize()
         {
-            var commandNamespace = GetType().GetCustomAttribute<CommandManagerAttribute>().CommandNamespaces;
+            var commandNamespace = GetType().GetCustomAttribute<CommandManagerAttribute>()?.CommandNamespaces;
             var types = Assembly.GetAssembly(GetType()).GetTypes();
+
+            if (commandNamespace == null)
+                commandNamespace = new[] { GetType().Namespace };
+
             var commands = types.Where(
                 t => t.GetCustomAttribute<CommandAttribute>() != null && commandNamespace.Contains(t.Namespace)).ToList();
 
