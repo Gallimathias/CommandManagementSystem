@@ -34,13 +34,13 @@ namespace CommandManagementSystem
         public CommandHolder(string id, Func<TArgs, dynamic> func, int priority) : base(id, func, priority) { }
     }
 
-    internal class CommandHolder : CommandHolder<EventArgs>
+    internal class CommandHolder : CommandHolder<object>
     {
         public CommandHolder(string id) : base(id) { }
 
-        public CommandHolder(string id, Func<EventArgs, dynamic> func) : base(id, func) { }
+        public CommandHolder(string id, Func<object, dynamic> func) : base(id, func) { }
 
-        public CommandHolder(string id, Func<EventArgs, dynamic> func, int priority) : base(id, func, priority) { }
+        public CommandHolder(string id, Func<object, dynamic> func, int priority) : base(id, func, priority) { }
     }
 
 }
