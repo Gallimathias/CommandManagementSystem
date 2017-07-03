@@ -242,5 +242,5 @@ namespace CommandManagementSystem
     /// An abstract base implementation of a command manager with string as command indentifiers
     /// and dynamic as result data type and EventArgs as parameter type
     /// </summary>
-    public abstract class CommandManager : CommandManager<EventArgs> { }
+    public abstract class CommandManager : CommandManager<object> { }
 }
