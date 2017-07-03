@@ -189,11 +189,11 @@ namespace CommandManagementSystem
                         BindingFlags.FlattenHierarchy |
                         BindingFlags.Static)
                     .Where(
-                        m => m.GetCustomAttribute<OneTimeCommandAttribute>() != null);
+                        m => m.GetCustomAttribute<CommandAttribute>() != null);
 
                 foreach (var member in members)
                 {
-                    commandHandler[(TIn)member.GetCustomAttribute<OneTimeCommandAttribute>().Tag] += (Func<TParameter, TOut>)(
+                    commandHandler[(TIn)member.GetCustomAttribute<CommandAttribute>().Tag] += (Func<TParameter, TOut>)(
                         (MethodInfo)member).CreateDelegate(typeof(Func<TParameter, TOut>));
                 }
 
