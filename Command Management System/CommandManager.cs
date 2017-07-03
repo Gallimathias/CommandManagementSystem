@@ -40,6 +40,10 @@ namespace CommandManagementSystem
         /// </summary>
         public virtual event CommandManagerEventHandler OnWaitingCommand;
 
+        /// <summary>
+        /// An abstract base implementation of a command manager. With control over the initialization
+        /// </summary>
+        /// <param name="initialize">If this value is set to false, no commands are searched by the manager.</param>
         public CommandManager(bool initialize)
         {
             commandHandler = new CommandHandler<TIn, TParameter, TOut>();
