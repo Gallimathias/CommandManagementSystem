@@ -1,8 +1,8 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("Command Management System-alpha")]
-[assembly: AssemblyDescription("A system for executable and extensible commands as events. This is a beta version which is intended only for test purposes and not for production use. Please report error on GitHub.")]
+[assembly: AssemblyTitle("Command Management System")]
+[assembly: AssemblyDescription("A system for executable and extensible commands as events.")]
 #region AssemblyConfiguration
 #if V47
 [assembly: AssemblyConfiguration(".NET 4.7")]
@@ -41,40 +41,40 @@ using System.Runtime.InteropServices;
 *                         from the second digit to the first separating null follows the framework version.    
 *
 *    Pattern: Major.MinorAndRevision.Build.AdditionalVersion
-*    Example: 2.00.1496512783.047
+*    Example: 2.00.101.047
 */
 #endregion version information
 
 #pragma warning disable CS7035 // The specified version string is: Major.MinorAndRevision.Build.AdditionalVersion
 #region AssemblyVersion
 #if V47
-[assembly: AssemblyVersion("2.00.7.147")]
-[assembly: AssemblyFileVersion("2.00.7.147")]
-[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_147")]
+[assembly: AssemblyVersion("2.00.8.047")]
+[assembly: AssemblyFileVersion("2.00.8.047")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0_047")]
 #elif V462
-[assembly: AssemblyVersion("2.00.7.1462")]
-[assembly: AssemblyFileVersion("2.00.7.1462")]
-[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_1462")]
+[assembly: AssemblyVersion("2.00.8.0462")]
+[assembly: AssemblyFileVersion("2.00.8.0462")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0_0462")]
 #elif V461
-[assembly: AssemblyVersion("2.00.7.1461")]
-[assembly: AssemblyFileVersion("2.00.7.1461")]
-[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_1461")]
+[assembly: AssemblyVersion("2.00.8.0461")]
+[assembly: AssemblyFileVersion("2.00.8.0461")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0_0461")]
 #elif V46
-[assembly: AssemblyVersion("2.00.7.146")]
-[assembly: AssemblyFileVersion("2.00.7.146")]
-[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_146")]
+[assembly: AssemblyVersion("2.00.8.046")]
+[assembly: AssemblyFileVersion("2.00.8.046")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0_046")]
 #elif V452
-[assembly: AssemblyVersion("2.00.7.1452")]
-[assembly: AssemblyFileVersion("2.00.7.1452")]
-[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_1452")]
+[assembly: AssemblyVersion("2.00.8.0452")]
+[assembly: AssemblyFileVersion("2.00.8.0452")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0_0452")]
 #elif V451
-[assembly: AssemblyVersion("2.00.7.1451")]
-[assembly: AssemblyFileVersion("2.00.7.1451")]
-[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_1451")]
+[assembly: AssemblyVersion("2.00.8.0451")]
+[assembly: AssemblyFileVersion("2.00.8.0451")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0_0451")]
 #elif V45
-[assembly: AssemblyVersion("2.00.7.145")]
-[assembly: AssemblyFileVersion("2.00.7.145")]
-[assembly: AssemblyInformationalVersion("Napoleon I. 2.0 - beta_145")]
+[assembly: AssemblyVersion("2.00.8.045")]
+[assembly: AssemblyFileVersion("2.00.8.045")]
+[assembly: AssemblyInformationalVersion("Napoleon I. 2.0_045")]
 #endif
 #endregion AssemblyVersion
 #pragma warning restore CS7035 // The specified version string is: Major.MinorAndRevision.Build.AdditionalVersion
