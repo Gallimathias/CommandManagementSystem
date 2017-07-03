@@ -40,14 +40,20 @@ namespace CommandManagementSystem
         /// </summary>
         public virtual event CommandManagerEventHandler OnWaitingCommand;
 
-        /// <summary>
-        /// An abstract base implementation of a command manager
-        /// </summary>        
-        public CommandManager()
+        public CommandManager(bool initialize)
         {
             commandHandler = new CommandHandler<TIn, TParameter, TOut>();
             waitingDictionary = new ConcurrentDictionary<TIn, Func<TParameter, TOut>>();
-            Initialize();
+
+            if (initialize)
+                Initialize();
+        }
+        /// <summary>
+        /// An abstract base implementation of a command manager
+        /// </summary>        
+        public CommandManager() : this(true)
+        {
+
         }
 
         /// <summary>
