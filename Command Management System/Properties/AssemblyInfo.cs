@@ -41,7 +41,7 @@ using System.Runtime.InteropServices;
 *                         from the second digit to the first separating null follows the framework version.    
 *
 *    Pattern: Major.MinorAndRevision.Build.AdditionalVersion
-*    Example: 2.00.1496512783.047
+*    Example: 2.00.101.047
 */
 #endregion version information
 
