@@ -110,5 +110,5 @@ namespace CommandManagementSystem
     /// Manages individual commands as events with string as command indentifier type and
     /// dynamic as return value and EventArgs as parameter type
     /// </summary>
-    public class CommandHandler : CommandHandler<EventArgs> { }
+    public class CommandHandler : CommandHandler<object> { }
 }

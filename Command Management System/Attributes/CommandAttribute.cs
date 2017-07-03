@@ -5,7 +5,7 @@ namespace CommandManagementSystem.Attributes
     /// <summary>
     /// Indicates a class as a command
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class, Inherited = true)]
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true)]
     public class CommandAttribute : Attribute
     {
         /// <summary>

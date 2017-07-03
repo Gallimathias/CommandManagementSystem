@@ -180,5 +180,5 @@ namespace CommandManagementSystem
     /// An abstract standard implementation of a command with dynamic as return type and 
     /// EventArgs As the parameter type 
     /// </summary>
-    public abstract class Command : Command<EventArgs, dynamic> { }
+    public abstract class Command : Command<object, dynamic> { }
 }

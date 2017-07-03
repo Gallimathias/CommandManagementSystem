@@ -41,13 +41,23 @@ namespace CommandManagementSystem
         public virtual event CommandManagerEventHandler OnWaitingCommand;
 
         /// <summary>
-        /// An abstract base implementation of a command manager
-        /// </summary>        
-        public CommandManager()
+        /// An abstract base implementation of a command manager. With control over the initialization
+        /// </summary>
+        /// <param name="initialize">If this value is set to false, no commands are searched by the manager.</param>
+        public CommandManager(bool initialize)
         {
             commandHandler = new CommandHandler<TIn, TParameter, TOut>();
             waitingDictionary = new ConcurrentDictionary<TIn, Func<TParameter, TOut>>();
-            Initialize();
+
+            if (initialize)
+                Initialize();
+        }
+        /// <summary>
+        /// An abstract base implementation of a command manager
+        /// </summary>        
+        public CommandManager() : this(true)
+        {
+
         }
 
         /// <summary>
@@ -56,8 +66,12 @@ namespace CommandManagementSystem
         /// </summary>
         public virtual void Initialize()
         {
-            var commandNamespace = GetType().GetCustomAttribute<CommandManagerAttribute>().CommandNamespaces;
+            var commandNamespace = GetType().GetCustomAttribute<CommandManagerAttribute>()?.CommandNamespaces;
             var types = Assembly.GetAssembly(GetType()).GetTypes();
+
+            if (commandNamespace == null)
+                commandNamespace = new[] { GetType().Namespace };
+
             var commands = types.Where(
                 t => t.GetCustomAttribute<CommandAttribute>() != null && commandNamespace.Contains(t.Namespace)).ToList();
 
@@ -189,11 +203,11 @@ namespace CommandManagementSystem
                         BindingFlags.FlattenHierarchy |
                         BindingFlags.Static)
                     .Where(
-                        m => m.GetCustomAttribute<OneTimeCommandAttribute>() != null);
+                        m => m.GetCustomAttribute<CommandAttribute>() != null);
 
                 foreach (var member in members)
                 {
-                    commandHandler[(TIn)member.GetCustomAttribute<OneTimeCommandAttribute>().Tag] += (Func<TParameter, TOut>)(
+                    commandHandler[(TIn)member.GetCustomAttribute<CommandAttribute>().Tag] += (Func<TParameter, TOut>)(
                         (MethodInfo)member).CreateDelegate(typeof(Func<TParameter, TOut>));
                 }
 
@@ -232,5 +246,5 @@ namespace CommandManagementSystem
     /// An abstract base implementation of a command manager with string as command indentifiers
     /// and dynamic as result data type and EventArgs as parameter type
     /// </summary>
-    public abstract class CommandManager : CommandManager<EventArgs> { }
+    public abstract class CommandManager : CommandManager<object> { }
 }
