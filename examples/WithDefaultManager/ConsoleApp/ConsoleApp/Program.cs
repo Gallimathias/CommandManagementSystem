@@ -15,15 +15,15 @@ namespace ConsoleApp
 
         static void Main(string[] args)
         {
-            defaultCommandManager = new DefaultCommandManager("ConsoleApp.Commands", "ConsoleApp");
+            defaultCommandManager = new DefaultCommandManager("ConsoleApp.Commands", "ConsoleApp"); //New instance of a standard manager with two search areas
 
             foreach (var command in args)
-                defaultCommandManager.Dispatch(command, null);
+                defaultCommandManager.Dispatch(command, null); //Dispatch a new command from args
 
             Console.ReadKey();
         }
 
-        [Command("/hello")]
+        [Command("/hello")] //OneTime command without creating an object
         static dynamic Hello(object[] arg)
         {
             Console.WriteLine("Hello");

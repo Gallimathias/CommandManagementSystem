@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Commands
 {
-    [Command("/time")]
+    [Command("/time")] //Complex command using the main method, an object is created
     public class TimeCommand : Command<object[]>
     {
         public override dynamic Main(object[] arg)
