@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Commands
 {
-    [Command("/reverse")]
+    [Command("/reverse")] //Complex command with several versions and stages
     public class ReverseCommand : Command<string, bool>
     {
         Random rand;
@@ -18,7 +18,7 @@ namespace ConsoleApp.Commands
             rand = new Random();
         }
 
-        [DispatchOrder(0)]
+        [DispatchOrder(0)] //Is executed the first time
         public bool GetChaos(string arg)
         {
             if (arg.Length < 10)
@@ -36,7 +36,7 @@ namespace ConsoleApp.Commands
             return true;
         }
 
-        [DispatchOrder(1)]
+        [DispatchOrder(1)] //Runs the second time
         public bool GetRevert(string arg)
         {
             if (arg.Length < 10)
