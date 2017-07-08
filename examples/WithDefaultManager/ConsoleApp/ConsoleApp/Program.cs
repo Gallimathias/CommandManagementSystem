@@ -23,7 +23,7 @@ namespace ConsoleApp
             Console.ReadKey();
         }
 
-        [OneTimeCommand("/hello")]
+        [Command("/hello")]
         static dynamic Hello(object[] arg)
         {
             Console.WriteLine("Hello");
