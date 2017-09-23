@@ -1,5 +1,8 @@
-- name: Articles
-  href: articles/
-- name: Api Documentation
+- name: Command Management System
   href: api/
   homepage: api/index.md
+- name: Wiki
+  href: wiki/
+  homepage: wiki/Home.md
+- name: License
+  homepage: License.md

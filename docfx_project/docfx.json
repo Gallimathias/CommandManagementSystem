@@ -4,13 +4,14 @@
       "src": [
         {
           "files": [
-            "../Command Management System/**.csproj"
+            "**.csproj"
           ],
           "exclude": [
             "**/obj/**",
             "**/bin/**",
             "_site/**"
-          ]
+          ],
+          "src":"../Command Management System"
         }
       ],
       "dest": "api"
@@ -34,6 +35,12 @@
         "exclude": [
           "obj/**",
           "_site/**"
+        ]
+      },
+      {
+        "files": [
+          "wiki/**.md",
+          "wiki/**/toc.yml"
         ]
       }
     ],
