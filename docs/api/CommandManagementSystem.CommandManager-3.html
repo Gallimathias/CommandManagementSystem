@@ -1,0 +1,846 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class CommandManager&lt;TIn, TParameter, TOut&gt;
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class CommandManager&lt;TIn, TParameter, TOut&gt;
+   ">
+    <meta name="generator" content="docfx 2.30.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CommandManagementSystem.CommandManager`3">
+  
+  
+  <h1 id="CommandManagementSystem_CommandManager_3" data-uid="CommandManagementSystem.CommandManager`3" class="text-break">Class CommandManager&lt;TIn, TParameter, TOut&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>An abstract base implementation of a command manager</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">CommandManager&lt;TIn, TParameter, TOut&gt;</span></div>
+      <div class="level2"><a class="xref" href="CommandManagementSystem.CommandManager-2.html">CommandManager&lt;TParameter, TOut&gt;</a></div>
+      <div class="level2"><a class="xref" href="CommandManagementSystem.DefaultCommandManager.html">DefaultCommandManager</a></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="CommandManagementSystem.Interfaces.ICommandManager-3.html">ICommandManager</a>&lt;TIn, TParameter, TOut&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="CommandManagementSystem.html">CommandManagementSystem</a></h6>
+  <h6><strong>Assembly</strong>: Command Management System.dll</h6>
+  <h5 id="CommandManagementSystem_CommandManager_3_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public abstract class CommandManager&lt;TIn, TParameter, TOut&gt; : ICommandManager&lt;TIn, TParameter, TOut&gt;</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">TIn</span></td>
+        <td><p>Data type of command indentifiers</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TParameter</span></td>
+        <td><p>Data type of command parameters</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="parametername">TOut</span></td>
+        <td><p>Return value of the dispatch method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3__ctor.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.%23ctor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L58">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3__ctor_" data-uid="CommandManagementSystem.CommandManager`3.#ctor*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3__ctor" data-uid="CommandManagementSystem.CommandManager`3.#ctor">CommandManager()</h4>
+  <div class="markdown level1 summary"><p>An abstract base implementation of a command manager</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CommandManager()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3__ctor_System_Boolean_.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.%23ctor(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L47">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3__ctor_" data-uid="CommandManagementSystem.CommandManager`3.#ctor*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3__ctor_System_Boolean_" data-uid="CommandManagementSystem.CommandManager`3.#ctor(System.Boolean)">CommandManager(Boolean)</h4>
+  <div class="markdown level1 summary"><p>An abstract base implementation of a command manager. With control over the initialization</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public CommandManager(bool initialize)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">initialize</span></td>
+        <td><p>If this value is set to false, no commands are searched by the manager.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="fields">Fields
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_commandHandler.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.commandHandler%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L22">View Source</a>
+  </span>
+  <h4 id="CommandManagementSystem_CommandManager_3_commandHandler" data-uid="CommandManagementSystem.CommandManager`3.commandHandler">commandHandler</h4>
+  <div class="markdown level1 summary"><p>The main command handler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected CommandHandler&lt;TIn, TParameter, TOut&gt; commandHandler</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CommandManagementSystem.CommandHandler-3.html">CommandHandler</a>&lt;TIn, TParameter, TOut&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_waitingDictionary.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.waitingDictionary%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L26">View Source</a>
+  </span>
+  <h4 id="CommandManagementSystem_CommandManager_3_waitingDictionary" data-uid="CommandManagementSystem.CommandManager`3.waitingDictionary">waitingDictionary</h4>
+  <div class="markdown level1 summary"><p>Dictionary with waiting commands</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected ConcurrentDictionary&lt;TIn, Func&lt;TParameter, TOut&gt;&gt; waitingDictionary</code></pre>
+  </div>
+  <h5 class="fieldValue">Field Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Concurrent.ConcurrentDictionary</span>&lt;TIn, <span class="xref">System.Func</span>&lt;TParameter, TOut&gt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_Command_FinishEvent_System_Object__1_.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.Command_FinishEvent(System.Object%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L161">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3_Command_FinishEvent_" data-uid="CommandManagementSystem.CommandManager`3.Command_FinishEvent*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3_Command_FinishEvent_System_Object__1_" data-uid="CommandManagementSystem.CommandManager`3.Command_FinishEvent(System.Object,`1)">Command_FinishEvent(Object, TParameter)</h4>
+  <div class="markdown level1 summary"><p>Executed when a command is finished</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Command_FinishEvent(object sender, TParameter arg)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">sender</span></td>
+        <td><p>The triggering command</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TParameter</span></td>
+        <td><span class="parametername">arg</span></td>
+        <td><p>The command parameters</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_Command_WaitEvent_System_Object_System_Func__1__2__.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.Command_WaitEvent(System.Object%2CSystem.Func%7B%601%2C%602%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L175">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3_Command_WaitEvent_" data-uid="CommandManagementSystem.CommandManager`3.Command_WaitEvent*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3_Command_WaitEvent_System_Object_System_Func__1__2__" data-uid="CommandManagementSystem.CommandManager`3.Command_WaitEvent(System.Object,System.Func{`1,`2})">Command_WaitEvent(Object, Func&lt;TParameter, TOut&gt;)</h4>
+  <div class="markdown level1 summary"><p>Executed when a command is waiting</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Command_WaitEvent(object sender, Func&lt;TParameter, TOut&gt; arg)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Object</span></td>
+        <td><span class="parametername">sender</span></td>
+        <td><p>The triggering command</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Func</span>&lt;TParameter, TOut&gt;</td>
+        <td><span class="parametername">arg</span></td>
+        <td><p>The dispatch method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_Dispatch__0__1_.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.Dispatch(%600%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L99">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3_Dispatch_" data-uid="CommandManagementSystem.CommandManager`3.Dispatch*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3_Dispatch__0__1_" data-uid="CommandManagementSystem.CommandManager`3.Dispatch(`0,`1)">Dispatch(TIn, TParameter)</h4>
+  <div class="markdown level1 summary"><p>Dispatch the specified command and pass the parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual TOut Dispatch(TIn command, TParameter arg)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TIn</span></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>The command Indentifier</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TParameter</span></td>
+        <td><span class="parametername">arg</span></td>
+        <td><p>The parameters to be transferred</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TOut</span></td>
+        <td><p>Returns the result of the dispatch</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_DispatchAsync__0__1_.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.DispatchAsync(%600%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L120">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3_DispatchAsync_" data-uid="CommandManagementSystem.CommandManager`3.DispatchAsync*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3_DispatchAsync__0__1_" data-uid="CommandManagementSystem.CommandManager`3.DispatchAsync(`0,`1)">DispatchAsync(TIn, TParameter)</h4>
+  <div class="markdown level1 summary"><p>Dispatch the specified command and pass the parameters asynchronous</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual Task&lt;TOut&gt; DispatchAsync(TIn command, TParameter arg)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TIn</span></td>
+        <td><span class="parametername">command</span></td>
+        <td><p>The command Indentifier</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TParameter</span></td>
+        <td><span class="parametername">arg</span></td>
+        <td><p>The parameters to be transferred</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;TOut&gt;</td>
+        <td><p>Returns the result of the dispatch</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_Initialize.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.Initialize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L67">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3_Initialize_" data-uid="CommandManagementSystem.CommandManager`3.Initialize*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3_Initialize" data-uid="CommandManagementSystem.CommandManager`3.Initialize">Initialize()</h4>
+  <div class="markdown level1 summary"><p>Initializes the command manager and registers the 
+corresponding commands at the command handler</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual void Initialize()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_InitializeCommand_CommandManagementSystem_Interfaces_ICommand__1__2___1_.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.InitializeCommand(CommandManagementSystem.Interfaces.ICommand%7B%601%2C%602%7D%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L129">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3_InitializeCommand_" data-uid="CommandManagementSystem.CommandManager`3.InitializeCommand*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3_InitializeCommand_CommandManagementSystem_Interfaces_ICommand__1__2___1_" data-uid="CommandManagementSystem.CommandManager`3.InitializeCommand(CommandManagementSystem.Interfaces.ICommand{`1,`2},`1)">InitializeCommand(ICommand&lt;TParameter, TOut&gt;, TParameter)</h4>
+  <div class="markdown level1 summary"><p>Initializes the passed command with the parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual TOut InitializeCommand(ICommand&lt;TParameter, TOut&gt; command, TParameter arg)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CommandManagementSystem.Interfaces.ICommand-2.html">ICommand</a>&lt;TParameter, TOut&gt;</td>
+        <td><span class="parametername">command</span></td>
+        <td><p>The command</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TParameter</span></td>
+        <td><span class="parametername">arg</span></td>
+        <td><p>The parameters to be transferred</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TOut</span></td>
+        <td><p>Returns the result of the initialize</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_InitializeCommand_System_Type__1_.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.InitializeCommand(System.Type%2C%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L142">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3_InitializeCommand_" data-uid="CommandManagementSystem.CommandManager`3.InitializeCommand*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3_InitializeCommand_System_Type__1_" data-uid="CommandManagementSystem.CommandManager`3.InitializeCommand(System.Type,`1)">InitializeCommand(Type, TParameter)</h4>
+  <div class="markdown level1 summary"><p>Initializes a command from the specified command datatype with the parameters</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual TOut InitializeCommand(Type commandType, TParameter arg)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">commandType</span></td>
+        <td><p>The command data type</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TParameter</span></td>
+        <td><span class="parametername">arg</span></td>
+        <td><p>The parameters to be transferred</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TOut</span></td>
+        <td><p>Returns the result of the initialize</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_InitializeCommand_System_Type__1_System_Object___.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.InitializeCommand(System.Type%2C%601%2CSystem.Object%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L153">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3_InitializeCommand_" data-uid="CommandManagementSystem.CommandManager`3.InitializeCommand*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3_InitializeCommand_System_Type__1_System_Object___" data-uid="CommandManagementSystem.CommandManager`3.InitializeCommand(System.Type,`1,System.Object[])">InitializeCommand(Type, TParameter, Object[])</h4>
+  <div class="markdown level1 summary"><p>Initializes a command from the specified command datatype with
+the parameters and start parameters for the constructor</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual TOut InitializeCommand(Type commandType, TParameter arg, params object[] startParams)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Type</span></td>
+        <td><span class="parametername">commandType</span></td>
+        <td><p>The command data type</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">TParameter</span></td>
+        <td><span class="parametername">arg</span></td>
+        <td><p>The parameters to be transferred</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Object</span>[]</td>
+        <td><span class="parametername">startParams</span></td>
+        <td><p>Parameters passed to the constructor</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">TOut</span></td>
+        <td><p>Returns the result of the initialize</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_InitializeOneTimeCommand.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.InitializeOneTimeCommand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L227">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3_InitializeOneTimeCommand_" data-uid="CommandManagementSystem.CommandManager`3.InitializeOneTimeCommand*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3_InitializeOneTimeCommand" data-uid="CommandManagementSystem.CommandManager`3.InitializeOneTimeCommand">InitializeOneTimeCommand()</h4>
+  <div class="markdown level1 summary"><p>Find and register all methods that has a OneTimeCommandAttribute as a command in the namespaces registered
+with the manager in the assembly where the CommandManager is defined.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void InitializeOneTimeCommand()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_InitializeOneTimeCommand_System_String___.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.InitializeOneTimeCommand(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L221">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3_InitializeOneTimeCommand_" data-uid="CommandManagementSystem.CommandManager`3.InitializeOneTimeCommand*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3_InitializeOneTimeCommand_System_String___" data-uid="CommandManagementSystem.CommandManager`3.InitializeOneTimeCommand(System.String[])">InitializeOneTimeCommand(String[])</h4>
+  <div class="markdown level1 summary"><p>Searches and registers all methods that have a OneTimeCommandAttribute as a command in the 
+specified namespace in the assembly where the CommandManager is defined.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void InitializeOneTimeCommand(string[] namespaces)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">namespaces</span></td>
+        <td><p>Namespaces in which the method searches</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_InitializeOneTimeCommand_System_String___System_Type___.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.InitializeOneTimeCommand(System.String%5B%5D%2CSystem.Type%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L192">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_CommandManager_3_InitializeOneTimeCommand_" data-uid="CommandManagementSystem.CommandManager`3.InitializeOneTimeCommand*"></a>
+  <h4 id="CommandManagementSystem_CommandManager_3_InitializeOneTimeCommand_System_String___System_Type___" data-uid="CommandManagementSystem.CommandManager`3.InitializeOneTimeCommand(System.String[],System.Type[])">InitializeOneTimeCommand(String[], Type[])</h4>
+  <div class="markdown level1 summary"><p>Searches and registers all methods in the given namespace in the TypeArray,
+which have a OneTimeCommandAttribute as a Command.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected void InitializeOneTimeCommand(string[] namespaces, Type[] types)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">namespaces</span></td>
+        <td><p>Namespaces in which the method searches</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Type</span>[]</td>
+        <td><span class="parametername">types</span></td>
+        <td><p>TypeArray that searches the method</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="events">Events
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_OnFinishedCommand.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.OnFinishedCommand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L37">View Source</a>
+  </span>
+  <h4 id="CommandManagementSystem_CommandManager_3_OnFinishedCommand" data-uid="CommandManagementSystem.CommandManager`3.OnFinishedCommand">OnFinishedCommand</h4>
+  <div class="markdown level1 summary"><p>Dispatched when a command is completed</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual event CommandManager&lt;TIn, TParameter, TOut&gt;.CommandManagerEventHandler OnFinishedCommand</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CommandManagementSystem.CommandManager-3.CommandManagerEventHandler.html">CommandManager.CommandManagerEventHandler</a>&lt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3_OnWaitingCommand.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603.OnWaitingCommand%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L41">View Source</a>
+  </span>
+  <h4 id="CommandManagementSystem_CommandManager_3_OnWaitingCommand" data-uid="CommandManagementSystem.CommandManager`3.OnWaitingCommand">OnWaitingCommand</h4>
+  <div class="markdown level1 summary"><p>Dispatched when a command is waiting</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public virtual event CommandManager&lt;TIn, TParameter, TOut&gt;.CommandManagerEventHandler OnWaitingCommand</code></pre>
+  </div>
+  <h5 class="eventType">Event Type</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="CommandManagementSystem.CommandManager-3.CommandManagerEventHandler.html">CommandManager.CommandManagerEventHandler</a>&lt;&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="CommandManagementSystem.Interfaces.ICommandManager-3.html">ICommandManager&lt;TIn, TParameter, TOut&gt;</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_CommandManager_3.md&amp;value=---%0Auid%3A%20CommandManagementSystem.CommandManager%603%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/CommandManager.cs/#L17" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
