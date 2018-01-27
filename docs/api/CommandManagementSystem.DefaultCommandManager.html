@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class DefaultCommandManager
+   </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class DefaultCommandManager
+   ">
+    <meta name="generator" content="docfx 2.30.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="CommandManagementSystem.DefaultCommandManager">
+  
+  
+  <h1 id="CommandManagementSystem_DefaultCommandManager" data-uid="CommandManagementSystem.DefaultCommandManager" class="text-break">Class DefaultCommandManager
+  </h1>
+  <div class="markdown level0 summary"><p>A standard implementation of a Command Manager. 
+Command = string, parameter = object [], return type = dynamic</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><a class="xref" href="CommandManagementSystem.CommandManager-3.html">CommandManager</a>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>[], <span class="xref">System.Object</span>&gt;</div>
+    <div class="level2"><span class="xref">DefaultCommandManager</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="CommandManagementSystem.Interfaces.ICommandManager-3.html">ICommandManager</a>&lt;<span class="xref">System.String</span>, <span class="xref">System.Object</span>[], <span class="xref">System.Object</span>&gt;</div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_commandHandler">CommandManager&lt;String, Object[], Object&gt;.commandHandler</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_waitingDictionary">CommandManager&lt;String, Object[], Object&gt;.waitingDictionary</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_OnFinishedCommand">CommandManager&lt;String, Object[], Object&gt;.OnFinishedCommand</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_OnWaitingCommand">CommandManager&lt;String, Object[], Object&gt;.OnWaitingCommand</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_Initialize">CommandManager&lt;String, Object[], Object&gt;.Initialize()</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_Dispatch__0__1_">CommandManager&lt;String, Object[], Object&gt;.Dispatch(String, Object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_DispatchAsync__0__1_">CommandManager&lt;String, Object[], Object&gt;.DispatchAsync(String, Object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_InitializeCommand_CommandManagementSystem_Interfaces_ICommand__1__2___1_">CommandManager&lt;String, Object[], Object&gt;.InitializeCommand(ICommand&lt;Object[], Object&gt;, Object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_InitializeCommand_System_Type__1_">CommandManager&lt;String, Object[], Object&gt;.InitializeCommand(Type, Object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_InitializeCommand_System_Type__1_System_Object___">CommandManager&lt;String, Object[], Object&gt;.InitializeCommand(Type, Object[], Object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_Command_FinishEvent_System_Object__1_">CommandManager&lt;String, Object[], Object&gt;.Command_FinishEvent(Object, Object[])</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_Command_WaitEvent_System_Object_System_Func__1__2__">CommandManager&lt;String, Object[], Object&gt;.Command_WaitEvent(Object, Func&lt;Object[], Object&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_InitializeOneTimeCommand_System_String___System_Type___">CommandManager&lt;String, Object[], Object&gt;.InitializeOneTimeCommand(String[], Type[])</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_InitializeOneTimeCommand_System_String___">CommandManager&lt;String, Object[], Object&gt;.InitializeOneTimeCommand(String[])</a>
+    </div>
+    <div>
+      <a class="xref" href="CommandManagementSystem.CommandManager-3.html#CommandManagementSystem_CommandManager_3_InitializeOneTimeCommand">CommandManager&lt;String, Object[], Object&gt;.InitializeOneTimeCommand()</a>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="CommandManagementSystem.html">CommandManagementSystem</a></h6>
+  <h6><strong>Assembly</strong>: Command Management System.dll</h6>
+  <h5 id="CommandManagementSystem_DefaultCommandManager_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[CommandManager(&quot;DefaultCommandManager&quot;)]
+public class DefaultCommandManager : CommandManager&lt;string, object[], dynamic&gt;, ICommandManager&lt;string, object[], dynamic&gt;</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_DefaultCommandManager__ctor_System_String___.md&amp;value=---%0Auid%3A%20CommandManagementSystem.DefaultCommandManager.%23ctor(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/DefaultCommandManager.cs/#L29">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_DefaultCommandManager__ctor_" data-uid="CommandManagementSystem.DefaultCommandManager.#ctor*"></a>
+  <h4 id="CommandManagementSystem_DefaultCommandManager__ctor_System_String___" data-uid="CommandManagementSystem.DefaultCommandManager.#ctor(System.String[])">DefaultCommandManager(String[])</h4>
+  <div class="markdown level1 summary"><p>A standard implementation of a Command Manager. </p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DefaultCommandManager(params string[] namespaces)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">namespaces</span></td>
+        <td><p>Namespace to be registered in the manager</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_DefaultCommandManager_IsInitialized.md&amp;value=---%0Auid%3A%20CommandManagementSystem.DefaultCommandManager.IsInitialized%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/DefaultCommandManager.cs/#L23">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_DefaultCommandManager_IsInitialized_" data-uid="CommandManagementSystem.DefaultCommandManager.IsInitialized*"></a>
+  <h4 id="CommandManagementSystem_DefaultCommandManager_IsInitialized" data-uid="CommandManagementSystem.DefaultCommandManager.IsInitialized">IsInitialized</h4>
+  <div class="markdown level1 summary"><p>This property returns true if the manager has been initialized</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsInitialized { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_DefaultCommandManager_Namespaces.md&amp;value=---%0Auid%3A%20CommandManagementSystem.DefaultCommandManager.Namespaces%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/DefaultCommandManager.cs/#L18">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_DefaultCommandManager_Namespaces_" data-uid="CommandManagementSystem.DefaultCommandManager.Namespaces*"></a>
+  <h4 id="CommandManagementSystem_DefaultCommandManager_Namespaces" data-uid="CommandManagementSystem.DefaultCommandManager.Namespaces">Namespaces</h4>
+  <div class="markdown level1 summary"><p>Namespaces that were registered in the default Command Manager</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Namespaces { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_DefaultCommandManager_Initialize.md&amp;value=---%0Auid%3A%20CommandManagementSystem.DefaultCommandManager.Initialize%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/DefaultCommandManager.cs/#L75">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_DefaultCommandManager_Initialize_" data-uid="CommandManagementSystem.DefaultCommandManager.Initialize*"></a>
+  <h4 id="CommandManagementSystem_DefaultCommandManager_Initialize" data-uid="CommandManagementSystem.DefaultCommandManager.Initialize">Initialize()</h4>
+  <div class="markdown level1 summary"><p>The overwritten default initialization method. 
+This method contains only one return and does not call base. Otherwise, errors occur</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Initialize()</code></pre>
+  </div>
+  <h5 class="overrides">Overrides</h5>
+  <div><span class="xref">CommandManagementSystem.CommandManager&lt;System.String, System.Object[], System.Object&gt;.Initialize()</span></div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_DefaultCommandManager_Initialize_System_Reflection_Assembly_System_String___.md&amp;value=---%0Auid%3A%20CommandManagementSystem.DefaultCommandManager.Initialize(System.Reflection.Assembly%2CSystem.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/DefaultCommandManager.cs/#L40">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_DefaultCommandManager_Initialize_" data-uid="CommandManagementSystem.DefaultCommandManager.Initialize*"></a>
+  <h4 id="CommandManagementSystem_DefaultCommandManager_Initialize_System_Reflection_Assembly_System_String___" data-uid="CommandManagementSystem.DefaultCommandManager.Initialize(System.Reflection.Assembly,System.String[])">Initialize(Assembly, String[])</h4>
+  <div class="markdown level1 summary"><p>Initalizes the manager with the specified namespaces in the specified assembly</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Initialize(Assembly assembly, params string[] namespaces)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Reflection.Assembly</span></td>
+        <td><span class="parametername">assembly</span></td>
+        <td><p>Assembly in which is searched</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">namespaces</span></td>
+        <td><p>Namespace to be registered in the manager</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_DefaultCommandManager_Initialize_System_String___.md&amp;value=---%0Auid%3A%20CommandManagementSystem.DefaultCommandManager.Initialize(System.String%5B%5D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/DefaultCommandManager.cs/#L69">View Source</a>
+  </span>
+  <a id="CommandManagementSystem_DefaultCommandManager_Initialize_" data-uid="CommandManagementSystem.DefaultCommandManager.Initialize*"></a>
+  <h4 id="CommandManagementSystem_DefaultCommandManager_Initialize_System_String___" data-uid="CommandManagementSystem.DefaultCommandManager.Initialize(System.String[])">Initialize(String[])</h4>
+  <div class="markdown level1 summary"><p>Initalizes the manager with the specified namespaces in the calling assembly of this method</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Initialize(params string[] namespaces)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">namespaces</span></td>
+        <td><p>Namespace to be registered in the manager</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="CommandManagementSystem.Interfaces.ICommandManager-3.html">ICommandManager&lt;TIn, TParameter, TOut&gt;</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Gallimathias/CommandManagementSystem/new/feature/docfx/apiSpec/new?filename=CommandManagementSystem_DefaultCommandManager.md&amp;value=---%0Auid%3A%20CommandManagementSystem.DefaultCommandManager%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Gallimathias/CommandManagementSystem/blob/feature/docfx/Command Management System/DefaultCommandManager.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

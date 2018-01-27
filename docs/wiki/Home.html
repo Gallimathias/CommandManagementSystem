@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>The Command Management System </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="The Command Management System ">
+    <meta name="generator" content="docfx 2.30.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+
+<p><img src="http://www.gallimathias.de/images/CoMaS.png" alt="Logo"> </p>
+<h1 id="the-command-management-system">The Command Management System</h1>
+<hr>
+<h2 id="what-is-the-command-management-system">What is the Command Management System?</h2>
+<p>The Command Management System helps you to implement an event system with a simple syntax that is highly adaptable. Whenever something should happen due to a command or trigger.</p>
+<h2 id="get-started">Get Started</h2>
+<h3 id="get-the-command-management-system">Get The Command Management System</h3>
+<p>Get the command management system via the NuGet package manager</p>
+<p><code>PM&gt; Install-Package CommandManagementSystem</code></p>
+<h3 id="start-with-the-default-manager">Start with the default manager</h3>
+<p>Add a variable from type default manager</p>
+<pre><code class="lang-csharp">DefaultCommandManager defaultCommandManager;
+</code></pre><p>And initialize it by specifying in the constructor the namespaces where your commands are located.</p>
+<pre><code class="lang-csharp">defaultCommandManager = new DefaultCommandManager(&quot;ConsoleApp.Commands&quot;, &quot;ConsoleApp&quot;);
+</code></pre><p>The default manager is now ready for use.
+You can now execute commands by calling the dispatch method and passing a commando tag as well as your arguments.</p>
+<pre><code class="lang-csharp">defaultCommandManager.Dispatch(&quot;/hello&quot;, null);
+</code></pre><h3 id="define-commands-as-methods">Define Commands as methods</h3>
+<p>If you want to write your command code in a simple method, you can use the CommandAttribute on a method. They are executed after each call and are then finished.</p>
+<pre><code class="lang-csharp">[Command(&quot;/hello&quot;)]
+static dynamic Hello(object[] arg)
+{
+  Console.WriteLine(&quot;Hello&quot;);
+  return null;
+}
+</code></pre><p>Use the Command attribute and give it a tag. In order for your command to work, the return type, the parameter type, and the type of the tag must be identical to that of the manager.</p>
+<p>For the Default command manager, this is: tag = string, parameter = object [], return = dynamic</p>
+<p>The code of this method is now executed when the dispatch method receives a string with the content &quot;/hello&quot;</p>
+<h3 id="define-complex-commands">Define complex commands</h3>
+<p>If you want to use complex commands, you can write a class for a command and assign it the command attribute.In addition, the class should inherit from the Command class</p>
+<pre><code class="lang-csharp">[Command(&quot;/time&quot;)]
+public class TimeCommand : Command&lt;object[]&gt;
+{
+  public override dynamic Main(object[] arg)
+  {
+    Console.WriteLine(DateTime.Now);
+    return base.Main(arg);
+  }
+}
+</code></pre><p>The manager now gets a string with the content &quot;/time&quot;, an object of this class is created and the main method is executed.</p>
+<p>You want it even more complex? No problem define methods with the DispatchOder attribute in your class</p>
+<pre><code class="lang-csharp">[Command(&quot;/test&quot;)]
+public class TimeCommand : Command&lt;object[]&gt;
+{
+ [DispatchOrder(0)]
+ public override dynamic Test0(object[] arg)
+ {
+  //Do something on first dispatch
+ }
+
+ [DispatchOrder(1)]
+ public override dynamic Test1(object[] arg)
+ {
+  //Do something on second dispatch
+ }
+}
+</code></pre><p>At each Dispatch the next method is lined up and executed. If another method exists, the object waits for the next dispatch. Only when no other methods are left will object discarded and a new generated.</p>
+<hr>
+<p>That was not complex enough for you? Then read the pages on the topic of customizing the CommandManager or write A completely own custom CommandManager.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Gallimathias/CommandManagementSystem.wiki/blob/master/Home.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2015-2017 Microsoft<br>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

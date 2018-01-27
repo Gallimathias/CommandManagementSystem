@@ -1,0 +1,399 @@
+{
+  "homepages": [],
+  "source_base_path": "D:/Projekte/Visual 2017/Command Management System/docfx_project",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "License.md",
+      "output": {
+        ".html": {
+          "relative_path": "License.html",
+          "hash": "8+JYBCgwhWEgaKId0dJDnQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.Attributes.CommandAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.Attributes.CommandAttribute.html",
+          "hash": "U8XPLpQun+FS4WtS5PLL2g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.Attributes.CommandManagerAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.Attributes.CommandManagerAttribute.html",
+          "hash": "wzqW8BB4Okgo8JupdJssJw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.Attributes.DispatchOrderAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.Attributes.DispatchOrderAttribute.html",
+          "hash": "PgGOyCM6GSEm8ouGX6ceHw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.Attributes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.Attributes.html",
+          "hash": "Hle62PWR7K2tsjELNWK6yQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.Command-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.Command-1.html",
+          "hash": "Bej1KmzJB2mCZdI+qGUw9g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.Command-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.Command-2.html",
+          "hash": "x0JJmZ65cHmwYFm5yT2qkw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.Command.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.Command.html",
+          "hash": "zWtGWPONppb1ZPXGfU0PHg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.CommandHandler-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.CommandHandler-1.html",
+          "hash": "OFWdzIYaHxpfUh46aMAFcw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.CommandHandler-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.CommandHandler-2.html",
+          "hash": "1ZAzPGMPr/k5uMKh9dLbTg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.CommandHandler-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.CommandHandler-3.html",
+          "hash": "quCdBEDxw55Rte+kb6bz6g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.CommandHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.CommandHandler.html",
+          "hash": "Y1nLUTGNO4Yh+KH2WE74cQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.CommandManager-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.CommandManager-1.html",
+          "hash": "IFmTopG7FaD92aakxNX1Lg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.CommandManager-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.CommandManager-2.html",
+          "hash": "Us04nErEsIltwRLzWRRj0A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.CommandManager-3.CommandManagerEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.CommandManager-3.CommandManagerEventHandler.html",
+          "hash": "C2iBhm82b+N+jpoXJaWWrg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.CommandManager-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.CommandManager-3.html",
+          "hash": "Y/L9wlmviOEgfdaUdvhsQw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.CommandManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.CommandManager.html",
+          "hash": "mtKTM6vdYGnd5tlYpVdLLg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.DefaultCommandManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.DefaultCommandManager.html",
+          "hash": "o8aK5pRne/Y0EZaDqL9cUg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.Interfaces.FinishEventHandler-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.Interfaces.FinishEventHandler-1.html",
+          "hash": "qVrZ0SP3O7cfdLUp3u3NOw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.Interfaces.ICommand-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.Interfaces.ICommand-2.html",
+          "hash": "rEZXkEK0FWK46H4pdR5z2g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.Interfaces.ICommandManager-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.Interfaces.ICommandManager-3.html",
+          "hash": "QD0A5WN0KRtu6wOA2kzEmg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.Interfaces.WaitEventHandler-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.Interfaces.WaitEventHandler-2.html",
+          "hash": "HqH6SLqu35L/y2YrD8ABVA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.Interfaces.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.Interfaces.html",
+          "hash": "pCBXHu+EWTDUkSw1FM9SgA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/CommandManagementSystem.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/CommandManagementSystem.html",
+          "hash": "117tPsQvr06f1sEbsJTYJw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "7h9PQ+47pkOu1YOjd5jTmw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html",
+          "hash": "PXPmiTww3wkL0xjbE/M74Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidYamlHeader",
+        "InvalidFileLink"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "V0ZD/wACb5rU4sZ778v5Xg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html",
+          "hash": "ifgMxCatg+Xi+MFI/ALFhw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "InvalidYamlHeader"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "wiki/Home.md",
+      "output": {
+        ".html": {
+          "relative_path": "wiki/Home.html",
+          "hash": "8HRc7fofdFKiiosrUocN4w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build"
+      },
+      "processors": {
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot suppport incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build"
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build"
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing"
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
