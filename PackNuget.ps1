@@ -1,1 +1,1 @@
-﻿nuget pack "Command Management System.nuspec"
+﻿nuget pack .\CommandManagementSystem.nuspec

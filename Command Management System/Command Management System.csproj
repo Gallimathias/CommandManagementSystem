@@ -1,27 +1,27 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageId>Command.Management.System</PackageId>
+    <PackageId>CommandManagementSystem</PackageId>
   </PropertyGroup>
-
+  <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\Release\netstandard2.0\</OutputPath>
-    <DocumentationFile>..\Release\netstandard2.0\netstandard2.0\Command Management System.xml</DocumentationFile>
+    <OutputPath>..\Release\</OutputPath>
+    <DocumentationFile>..\Release\netstandard2.0\Command Management System.xml</DocumentationFile>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="LICENSE" />
     <None Remove="NOTICE" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="LICENSE">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
     <Content Include="NOTICE">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
 </Project>

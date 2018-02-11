@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>CommandManagementSystem</id>
+    <version>3.0.0-alpha1</version>
+    <title>Command Management System</title>
+    <authors>Marcus Aurelius (CLattenzaun.de)</authors>
+    <owners>gallimathias</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/Gallimathias/CommandManagementSystem/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/Gallimathias/CommandManagementSystem</projectUrl>
+    <iconUrl>http://www.gallimathias.de/images/CoMaS.png</iconUrl>
+    <description>A system for executable and extensible commands as events.</description>
+    <releaseNotes>The new version of the Command Management System with new features. Detailed information can be found in GitHub</releaseNotes>
+    <copyright>Copyright 2017 gallimathias</copyright>
+    <tags>command commands management system framework order</tags>
+  </metadata>
+  <files>
+    <file src="Release\**" target="lib"/>
+    <file src="NOTICE" target="content\NOTICE"/>
+    <file src="LICENSE"/>
+  </files>
+</package>

@@ -3,15 +3,9 @@ using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("Command Management System")]
 [assembly: AssemblyDescription("A system for executable and extensible commands as events.")]
-#region AssemblyConfiguration
-#if  V46
-[assembly: AssemblyConfiguration(".NET 4.6")]
-#elif V45
-[assembly: AssemblyConfiguration(".NET 4.5")]
-#endif
-#endregion AssemblyConfiguration
+[assembly: AssemblyConfiguration(".NET Standard 2.0")]
 [assembly: AssemblyCompany("www.gallimathias.de")]
-[assembly: AssemblyProduct("Command Management System-alpa")]
+[assembly: AssemblyProduct("Command Management System-beta")]
 [assembly: AssemblyCopyright("Copyright 2018 gallimathias. Licensed under Apache License Version 2.0")]
 
 [assembly: ComVisible(false)]
@@ -36,17 +30,9 @@ using System.Runtime.InteropServices;
 #endregion version information
 
 #pragma warning disable CS7035 // The specified version string is: Major.MinorAndRevision.Build.AdditionalVersion
-#region AssemblyVersion
-#if V46
-[assembly: AssemblyVersion("3.00.0.146")]
-[assembly: AssemblyFileVersion("3.00.0.146")]
-[assembly: AssemblyInformationalVersion("3.00.0.1_46")]
-#elif V45
-[assembly: AssemblyVersion("3.00.0.145")]
-[assembly: AssemblyFileVersion("3.00.0.145")]
-[assembly: AssemblyInformationalVersion("3.00.0.1_45")]
-#endif
-#endregion AssemblyVersion
+[assembly: AssemblyVersion("3.00.0.220")]
+[assembly: AssemblyFileVersion("3.00.0.220")]
+[assembly: AssemblyInformationalVersion("3.00.0.2_20")]
 #pragma warning restore CS7035 // The specified version string is: Major.MinorAndRevision.Build.AdditionalVersion
 
 #region Apache License
