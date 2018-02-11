@@ -30,6 +30,7 @@ namespace CommandManagementSystem
 
         private static bool registered;
         private static object tag;
+        private static bool reinitialize;
 
         /// <summary>
         /// Contains the delegates for the next function to execute
@@ -39,6 +40,10 @@ namespace CommandManagementSystem
         /// Returns whether the command has already gone through all steps
         /// </summary>
         public bool Finished { get; protected set; }
+        /// <summary>
+        /// Returns a true if the command is to be reinitialized
+        /// </summary>
+        public bool Reinitialize => reinitialize;
         /// <summary>
         /// Unique Indentifikator for the command
         /// </summary>
@@ -81,20 +86,11 @@ namespace CommandManagementSystem
 
             executionCount++;
             var returnValue = NextFunction(arg);
-            if (Registered)
-            {
-                if (executionCount < ExecutionOrder.Length)
-                    RaiseWaitEvent(this, Dispatch);
-                else
-                    RaiseFinishEvent(this, arg);
-            }
+            
+            if (Registered ? executionCount < ExecutionOrder.Length : NextFunction != null)
+                RaiseWaitEvent(this, Dispatch);
             else
-            {
-                if (NextFunction != null)
-                    RaiseWaitEvent(this, Dispatch);
-                else
-                    RaiseFinishEvent(this, arg);
-            }
+                RaiseFinishEvent(this, arg);
 
             return returnValue;
         }
@@ -134,15 +130,19 @@ namespace CommandManagementSystem
         /// <param name="type">The type of this class</param>
         public static void Register(Type type)
         {
-            tag = type?.GetCustomAttribute<CommandAttribute>()?.Tag;
-            
-            var actions = type?
-                .GetMembers(
-                    BindingFlags.NonPublic |
-                    BindingFlags.Public |
-                    BindingFlags.Instance |
-                    BindingFlags.Static |
-                    BindingFlags.FlattenHierarchy)?
+            var attribute = type.GetCustomAttribute<CommandAttribute>();
+
+            tag = attribute.Tag;
+            reinitialize = attribute.Reinitialize;
+
+            var actions = type
+                .GetRuntimeMethods()
+                //.GetMembers(
+                //    BindingFlags.NonPublic |
+                //    BindingFlags.Public |
+                //    BindingFlags.Instance |
+                //    BindingFlags.Static |
+                //    BindingFlags.FlattenHierarchy)?
                 .Where(
                     m => m.GetCustomAttribute<DispatchOrderAttribute>() != null)?
                 .ToArray();

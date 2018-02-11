@@ -128,8 +128,8 @@ namespace CommandManagementSystem
         /// <returns>Returns the result of the initialize</returns>
         public virtual TOut InitializeCommand(ICommand<TParameter, TOut> command, TParameter arg)
         {
-            command.FinishEvent += Command_FinishEvent;
-            command.WaitEvent += Command_WaitEvent;
+            command.FinishEvent += CommandFinishEvent;
+            command.WaitEvent += CommandWaitEvent;
 
             return command.Initialize(arg);
         }
@@ -141,7 +141,6 @@ namespace CommandManagementSystem
         /// <returns>Returns the result of the initialize</returns>
         public virtual TOut InitializeCommand(Type commandType, TParameter arg) =>
             InitializeCommand((ICommand<TParameter, TOut>)Activator.CreateInstance(commandType), arg);
-
         /// <summary>
         /// Initializes a command from the specified command datatype with
         /// the parameters and start parameters for the constructor
@@ -158,21 +157,31 @@ namespace CommandManagementSystem
         /// </summary>
         /// <param name="sender">The triggering command</param>
         /// <param name="arg">The command parameters</param>
-        public virtual void Command_FinishEvent(object sender, TParameter arg)
+        public virtual void CommandFinishEvent(object sender, TParameter arg)
         {
             var command = (ICommand<TParameter, TOut>)sender;
 
             waitingDictionary.TryRemove((TIn)command.TAG, out Func<TParameter, TOut> method);
 
+            if (command.Reinitialize)
+                commandHandler[(TIn)command.TAG] += (e) => InitializeCommand(command.GetType(), e);
+
             OnFinishedCommand?.Invoke(command, arg);
         }
+        /// <summary>
+        /// This method is obsolete please use instead CommandFinishEvent.
+        /// </summary>
+        /// <param name="sender">The triggering command</param>
+        /// <param name="arg">The command parameters</param>
+        [Obsolete("This method has been renamed to CommandFinishEvent")]        
+        public virtual void Command_FinishEvent(object sender, TParameter arg) => CommandFinishEvent(sender, arg);
 
         /// <summary>
         /// Executed when a command is waiting
         /// </summary>
         /// <param name="sender">The triggering command</param>
         /// <param name="arg">The dispatch method</param>
-        public virtual void Command_WaitEvent(object sender, Func<TParameter, TOut> arg)
+        public virtual void CommandWaitEvent(object sender, Func<TParameter, TOut> arg)
         {
             if (arg == null && sender == null)
                 return;
@@ -182,6 +191,13 @@ namespace CommandManagementSystem
             if (!waitingDictionary.TryAdd((TIn)command.TAG, arg))
                 waitingDictionary.TryUpdate((TIn)command.TAG, arg, arg);
         }
+        /// <summary>
+        /// This method is obsolete please use instead CommandWaitEvent.
+        /// </summary>
+        /// <param name="sender">The triggering command</param>
+        /// <param name="arg">The dispatch method</param>
+        [Obsolete("This method has been renamed to CommandWaitEvent")]
+        public virtual void Command_WaitEvent(object sender, Func<TParameter, TOut> arg) => CommandWaitEvent(sender, arg);
 
         /// <summary>
         /// Searches and registers all methods in the given namespace in the TypeArray,
@@ -196,19 +212,21 @@ namespace CommandManagementSystem
 
             foreach (var commandClass in commandClasses)
             {
-                var members = commandClass.GetMembers(
-                        BindingFlags.NonPublic |
-                        BindingFlags.Public |
-                        BindingFlags.Instance |
-                        BindingFlags.FlattenHierarchy |
-                        BindingFlags.Static)
+                var members = commandClass
+                    .GetRuntimeMethods()
+                    //.GetMembers(
+                    //    BindingFlags.NonPublic |
+                    //    BindingFlags.Public |
+                    //    BindingFlags.Instance |
+                    //    BindingFlags.FlattenHierarchy |
+                    //    BindingFlags.Static)
                     .Where(
                         m => m.GetCustomAttribute<CommandAttribute>() != null);
 
                 foreach (var member in members)
                 {
-                    commandHandler[(TIn)member.GetCustomAttribute<CommandAttribute>().Tag] += (Func<TParameter, TOut>)(
-                        (MethodInfo)member).CreateDelegate(typeof(Func<TParameter, TOut>));
+                    commandHandler[(TIn)member.GetCustomAttribute<CommandAttribute>().Tag] += (Func<TParameter, TOut>)
+                        member.CreateDelegate(typeof(Func<TParameter, TOut>));
                 }
 
             }

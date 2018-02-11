@@ -34,6 +34,10 @@ namespace CommandManagementSystem.Interfaces
         /// </summary>
         bool Finished { get; }
         /// <summary>
+        /// Returns a true if the command is to be reinitialized
+        /// </summary>
+        bool Reinitialize { get; }
+        /// <summary>
         /// Unique Indentifikator for the command
         /// </summary>
         object TAG { get; }
