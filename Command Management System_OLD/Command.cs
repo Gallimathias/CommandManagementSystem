@@ -135,7 +135,7 @@ namespace CommandManagementSystem
         public static void Register(Type type)
         {
             tag = type?.GetCustomAttribute<CommandAttribute>()?.Tag;
-            
+
             var actions = type?
                 .GetMembers(
                     BindingFlags.NonPublic |
