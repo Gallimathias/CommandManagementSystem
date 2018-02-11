@@ -1,1 +1,0 @@
-﻿.\nuget pack "Command Management System.nuspec"

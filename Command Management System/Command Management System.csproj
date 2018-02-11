@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Command.Management.System</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\Release\netstandard2.0\</OutputPath>
+    <DocumentationFile>..\Release\netstandard2.0\netstandard2.0\Command Management System.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

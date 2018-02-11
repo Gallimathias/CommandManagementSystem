@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Command Management System_OLD", "Command Management System_OLD\Command Management System_OLD.csproj", "{D20367E9-5AF9-4024-B22F-3AC6ACD8DD36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Command Management System", "Command Management System\Command Management System.csproj", "{5FFEC465-3BB3-41B6-AEA3-4F07F3CF8EAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Command Management System", "Command Management System\Command Management System.csproj", "{5FFEC465-3BB3-41B6-AEA3-4F07F3CF8EAD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +15,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D20367E9-5AF9-4024-B22F-3AC6ACD8DD36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D20367E9-5AF9-4024-B22F-3AC6ACD8DD36}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D20367E9-5AF9-4024-B22F-3AC6ACD8DD36}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D20367E9-5AF9-4024-B22F-3AC6ACD8DD36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D20367E9-5AF9-4024-B22F-3AC6ACD8DD36}.Release|Any CPU.ActiveCfg = Release_4.5|Any CPU
+		{D20367E9-5AF9-4024-B22F-3AC6ACD8DD36}.Release|Any CPU.Build.0 = Release_4.5|Any CPU
 		{5FFEC465-3BB3-41B6-AEA3-4F07F3CF8EAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5FFEC465-3BB3-41B6-AEA3-4F07F3CF8EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FFEC465-3BB3-41B6-AEA3-4F07F3CF8EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
