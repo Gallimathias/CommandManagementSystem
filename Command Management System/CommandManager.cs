@@ -83,7 +83,7 @@ namespace CommandManagementSystem
                     BindingFlags.Public |
                     BindingFlags.FlattenHierarchy)
                     .Invoke(null, new[] { command });
-                commandHandler[(TIn)command.GetCustomAttribute<CommandAttribute>().Tag] += (e)
+                commandHandler[(TIn)command.GetCustomAttribute<CommandAttribute>().Tag] = (e)
                     => InitializeCommand(command, e);
             }
 
@@ -164,7 +164,7 @@ namespace CommandManagementSystem
             waitingDictionary.TryRemove((TIn)command.TAG, out Func<TParameter, TOut> method);
 
             if (command.Reinitialize)
-                commandHandler[(TIn)command.TAG] += (e) => InitializeCommand(command.GetType(), e);
+                commandHandler[(TIn)command.TAG] = (e) => InitializeCommand(command.GetType(), e);
 
             OnFinishedCommand?.Invoke(command, arg);
         }
@@ -225,7 +225,7 @@ namespace CommandManagementSystem
 
                 foreach (var member in members)
                 {
-                    commandHandler[(TIn)member.GetCustomAttribute<CommandAttribute>().Tag] += (Func<TParameter, TOut>)
+                    commandHandler[(TIn)member.GetCustomAttribute<CommandAttribute>().Tag] = (Func<TParameter, TOut>)
                         member.CreateDelegate(typeof(Func<TParameter, TOut>));
                 }
 
