@@ -11,13 +11,14 @@
     <projectUrl>https://github.com/Gallimathias/CommandManagementSystem</projectUrl>
     <iconUrl>http://www.gallimathias.de/images/CoMaS.png</iconUrl>
     <description>A system for executable and extensible commands as events.</description>
-    <releaseNotes>The new version of the Command Management System with new features. Detailed information can be found in GitHub</releaseNotes>
-    <copyright>Copyright 2017 gallimathias</copyright>
-    <tags>command commands management system framework order</tags>
+    <releaseNotes>This is a nightly build that is actively under development. It should not be used for production systems. More detailed information can be found on GitHub.</releaseNotes>
+    <copyright>Copyright 2018 gallimathias</copyright>
+    <tags>command commands management system framework order dependencies</tags>
   </metadata>
   <files>
     <file src="Release\**" target="lib"/>
     <file src="NOTICE" target="content\NOTICE"/>
     <file src="LICENSE"/>
+    <file src="ReleaseNotes.md" target="Readme.md"/>
   </files>
 </package>
