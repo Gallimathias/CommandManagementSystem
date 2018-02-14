@@ -57,23 +57,23 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\CommandAttribute.cs" />
-    <Compile Include="Attributes\CommandManagerAttribute.cs" />
-    <Compile Include="Attributes\DispatchOrderAttribute.cs" />
-    <Compile Include="Command.cs" />
-    <Compile Include="CommandHandler.cs" />
-    <Compile Include="CommandHolder.cs" />
-    <Compile Include="CommandManager.cs" />
-    <Compile Include="DefaultCommandManager.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="Interfaces\ICommand.cs" />
-    <Compile Include="Interfaces\ICommandManager.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\Command Management System\Attributes\CommandAttribute.cs" />
+    <Compile Include="..\Command Management System\Attributes\CommandManagerAttribute.cs" />
+    <Compile Include="..\Command Management System\Attributes\DispatchOrderAttribute.cs" />
+    <Compile Include="..\Command Management System\Command.cs" />
+    <Compile Include="..\Command Management System\CommandHandler.cs" />
+    <Compile Include="..\Command Management System\CommandHolder.cs" />
+    <Compile Include="..\Command Management System\CommandManager.cs" />
+    <Compile Include="..\Command Management System\DefaultCommandManager.cs" />
+    <Compile Include="..\Command Management System\GlobalSuppressions.cs" />
+    <Compile Include="..\Command Management System\Interfaces\ICommand.cs" />
+    <Compile Include="..\Command Management System\Interfaces\ICommandManager.cs" />
+    <Compile Include="..\Command Management System\Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CoMaS.pfx" />
-    <Content Include="LICENSE" />
-    <Content Include="NOTICE" />
+    <None Include="..\Command Management System\CoMaS.pfx" />
+    <Content Include="..\Command Management System\LICENSE" />
+    <Content Include="..\Command Management System\NOTICE" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

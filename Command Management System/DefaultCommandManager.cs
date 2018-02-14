@@ -55,7 +55,7 @@ namespace CommandManagementSystem
                    BindingFlags.Public |
                    BindingFlags.FlattenHierarchy)
                    .Invoke(null, new[] { command });
-                commandHandler[(string)command.GetCustomAttribute<CommandAttribute>().Tag] += (e)
+                commandHandler[(string)command.GetCustomAttribute<CommandAttribute>().Tag] = (e)
                     => InitializeCommand(command, e);
             }
 
