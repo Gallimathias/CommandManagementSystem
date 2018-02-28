@@ -8,6 +8,7 @@ namespace CommandManagementSystem
 
         public TID ID { get; private set; }
         public int Priority { get; private set; }
+        public TID[] Aliases { get; internal set; }
 
         public CommandHolder(TID id) => ID = id;
 

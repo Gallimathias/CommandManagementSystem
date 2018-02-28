@@ -17,14 +17,14 @@ namespace CommandManagementSystem
         /// </summary>
         public ConcurrentQueue<KeyValuePair<TIn, TParameter>> CommandQueue { get; private set; }
 
-        private ConcurrentDictionary<TIn, CommandHolder<TIn, TParameter, TOut>> mainDictionary;
+        private CommandList<TIn, TParameter, TOut> mainList;
 
         /// <summary>
         /// Manages individual commands as events
         /// </summary>
         public CommandHandler()
         {
-            mainDictionary = new ConcurrentDictionary<TIn, CommandHolder<TIn, TParameter, TOut>>();
+            mainList = new ConcurrentDictionary<TIn, CommandHolder<TIn, TParameter, TOut>>();
             CommandQueue = new ConcurrentQueue<KeyValuePair<TIn, TParameter>>();
         }
 
@@ -37,17 +37,17 @@ namespace CommandManagementSystem
         {
             get
             {
-                mainDictionary.TryGetValue(commandName, out CommandHolder<TIn, TParameter, TOut> value);
+                mainList.TryGetValue(commandName, out CommandHolder<TIn, TParameter, TOut> value);
                 return value?.Delegate;
             }
             set
             {
-                if (mainDictionary.ContainsKey(commandName))
-                    mainDictionary.TryUpdate(commandName,
+                if (mainList.ContainsKey(commandName))
+                    mainList.TryUpdate(commandName,
                         new CommandHolder<TIn, TParameter, TOut>(commandName, value),
-                        mainDictionary[commandName]);
+                        mainList[commandName]);
                 else
-                    mainDictionary.TryAdd(commandName, new CommandHolder<TIn, TParameter, TOut>(commandName, value));
+                    mainList.TryAdd(commandName, new CommandHolder<TIn, TParameter, TOut>(commandName, value));
             }
         }
 
@@ -57,7 +57,7 @@ namespace CommandManagementSystem
         /// <param name="commandName">The command identifier</param>
         /// <param name="parameter">The parameters to be transferred</param>
         /// <returns>Returns the set value</returns>
-        public TOut Dispatch(TIn commandName, TParameter parameter) => mainDictionary[commandName].Delegate(parameter);
+        public TOut Dispatch(TIn commandName, TParameter parameter) => mainList[commandName].Delegate(parameter);
 
         /// <summary>
         /// Does not dispose of a command until the submit method is called
@@ -88,7 +88,7 @@ namespace CommandManagementSystem
         /// </summary>
         /// <param name="commandName">The command identifier</param>
         /// <returns>Returns a true if the command is already registered</returns>
-        public bool CommandExists(TIn commandName) => mainDictionary.ContainsKey(commandName);
+        public bool CommandExists(TIn commandName) => mainList.ContainsKey(commandName);
 
     }
 

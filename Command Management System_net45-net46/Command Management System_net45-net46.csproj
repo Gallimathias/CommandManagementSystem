@@ -63,6 +63,7 @@
     <Compile Include="..\Command Management System\Command.cs" />
     <Compile Include="..\Command Management System\CommandHandler.cs" />
     <Compile Include="..\Command Management System\CommandHolder.cs" />
+    <Compile Include="..\Command Management System\CommandList.cs" />
     <Compile Include="..\Command Management System\CommandManager.cs" />
     <Compile Include="..\Command Management System\DefaultCommandManager.cs" />
     <Compile Include="..\Command Management System\GlobalSuppressions.cs" />
