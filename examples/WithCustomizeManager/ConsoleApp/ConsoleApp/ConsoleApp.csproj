@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Command Management System, Version=3.0.0.146, Culture=neutral, PublicKeyToken=304a821013b0b687, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommandManagementSystem.3.0.0-alpha1\lib\net46\Command Management System.dll</HintPath>
+      <HintPath>..\packages\CommandManagementSystem.3.0.0-alpha2\lib\net46\Command Management System.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -6,13 +6,13 @@ using System.Threading;
 
 namespace CommandManagementSystem
 {
-    internal class CommandList<TID, TArgs, TReturnValue> : ICollection, IEnumerable, IDictionary
+    internal class CommandList<TId, TArgs, TReturnValue> : ICollection, IEnumerable, IDictionary
     {
-        public CommandHolder<TID, TArgs, TReturnValue> this[TID commandName]
+        public CommandHolder<TId, TArgs, TReturnValue> this[TId commandName]
         {
             get
             {
-                TryGetValue(commandName, out CommandHolder<TID, TArgs, TReturnValue> value);
+                TryGetValue(commandName, out CommandHolder<TId, TArgs, TReturnValue> value);
                 return value;
             }
             set
@@ -20,7 +20,7 @@ namespace CommandManagementSystem
                 TryAdd(value);
             }
         }
-        public CommandHolder<TID, TArgs, TReturnValue> this[int index]
+        public CommandHolder<TId, TArgs, TReturnValue> this[int index]
         {
             get
             {
@@ -37,7 +37,7 @@ namespace CommandManagementSystem
         {
             get
             {
-                if (key is TID id)
+                if (key is TId id)
                     return this[id];
                 else if (key is int index)
                     return this[index];
@@ -46,10 +46,10 @@ namespace CommandManagementSystem
             }
             set
             {
-                if (key is TID id)
-                    this[id] = (CommandHolder<TID, TArgs, TReturnValue>)value;
+                if (key is TId id)
+                    this[id] = (CommandHolder<TId, TArgs, TReturnValue>)value;
                 else if (key is int index)
-                    this[index] = (CommandHolder<TID, TArgs, TReturnValue>)value;
+                    this[index] = (CommandHolder<TId, TArgs, TReturnValue>)value;
             }
         }
         public int Count
@@ -83,45 +83,49 @@ namespace CommandManagementSystem
             }
         }
         
-        private Dictionary<TID, int> keys;
-        private List<CommandHolder<TID, TArgs, TReturnValue>> items;
+        private Dictionary<TId, int> keys;
+        private List<CommandHolder<TId, TArgs, TReturnValue>> items;
         private object itemsLock;
         private object keysLock;
+        private int globalIndex;
 
         public CommandList()
         {
-            keys = new Dictionary<TID, int>();
-            items = new List<CommandHolder<TID, TArgs, TReturnValue>>();
+            keys = new Dictionary<TId, int>();
+            items = new List<CommandHolder<TId, TArgs, TReturnValue>>();
             itemsLock = new object();
             keysLock = new object();
+            globalIndex = 0;
         }
 
-        public bool TryAdd(CommandHolder<TID, TArgs, TReturnValue> commandHolder)
+        public bool TryAdd(CommandHolder<TId, TArgs, TReturnValue> commandHolder)
         {
             lock (keysLock)
             {
-                if (keys.ContainsKey(commandHolder.ID))
+                if (keys.ContainsKey(commandHolder.Id))
                     return false;
 
                 lock (itemsLock)
                 {
                     items.Add(commandHolder);
 
-                    keys.Add(commandHolder.ID, items.Count);
+                    keys.Add(commandHolder.Id, globalIndex);
 
                     for (int i = 0; i < commandHolder.Aliases.Length; i++)
-                        keys.Add(commandHolder.Aliases[i], items.Count);
+                        keys.Add(commandHolder.Aliases[i], globalIndex);
+
+                    globalIndex++;
                 }
             }
 
             return true;
         }
 
-        public bool TryUpdate(CommandHolder<TID, TArgs, TReturnValue> commandHolder)
+        public bool TryUpdate(CommandHolder<TId, TArgs, TReturnValue> commandHolder)
         {
             lock (keysLock)
             {
-                if(keys.TryGetValue(commandHolder.ID, out int index))
+                if(keys.TryGetValue(commandHolder.Id, out int index))
                 {
                     lock (itemsLock)
                         items[index] = commandHolder;
@@ -135,7 +139,7 @@ namespace CommandManagementSystem
             }
         }
 
-        public bool TryGetValue(TID id, out CommandHolder<TID, TArgs, TReturnValue> commandHolder)
+        public bool TryGetValue(TId id, out CommandHolder<TId, TArgs, TReturnValue> commandHolder)
         {
             bool keyResult;
             int index;
@@ -153,7 +157,7 @@ namespace CommandManagementSystem
             return keyResult;
         }
 
-        public bool ContainsKey(TID commandName)
+        public bool ContainsKey(TId commandName)
         {
             lock (keysLock)
                 return keys.ContainsKey(commandName);
@@ -187,6 +191,7 @@ namespace CommandManagementSystem
                 {
                     items.Clear();
                     keys.Clear();
+                    globalIndex = 0;
                 }
             }
         }
@@ -194,7 +199,7 @@ namespace CommandManagementSystem
         public bool Contains(object key)
         {
             lock (keysLock)
-                return keys.ContainsKey((TID)key);
+                return keys.ContainsKey((TId)key);
         }
 
         public void Remove(object key)
@@ -203,17 +208,17 @@ namespace CommandManagementSystem
             {
                 lock (itemsLock)
                 {
-                    var index = keys[(TID)key];
+                    var index = keys[(TId)key];
                     items.RemoveAt(index);
 
                     keys.Clear();
 
-                    for (int i = 0; i < items.Count; i++)
+                    for (globalIndex = 0; globalIndex < items.Count; globalIndex++)
                     {
-                        keys.Add(items[i].ID, i);
+                        keys.Add(items[globalIndex].Id, globalIndex);
 
-                        for (int a = 0; a < items[i].Aliases.Length; a++)
-                            keys.Add(items[i].Aliases[a], i);
+                        for (int a = 0; a < items[globalIndex].Aliases.Length; a++)
+                            keys.Add(items[globalIndex].Aliases[a], globalIndex);
                     }
                 }
             }

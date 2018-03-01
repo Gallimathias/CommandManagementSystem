@@ -2,22 +2,26 @@
 
 namespace CommandManagementSystem
 {
-    internal class CommandHolder<TID, TArgs, TReturnValue>
+    internal class CommandHolder<TId, TArgs, TReturnValue>
     {
         public Func<TArgs, TReturnValue> Delegate { get; set; }
 
-        public TID ID { get; private set; }
-        public TID[] Aliases { get; internal set; }
+        public TId Id { get; private set; }
+        public TId[] Aliases { get; internal set; }
 
         [Obsolete("The priority no longer has any use", false)]
         public int Priority { get; private set; }
 
-        public CommandHolder(TID id) => ID = id;
+        public CommandHolder(TId id)
+        {
+            Aliases = new TId[0];
+            Id = id;
+        }
 
-        public CommandHolder(TID id, Func<TArgs, TReturnValue> func) : this(id) => Delegate = func;
+        public CommandHolder(TId id, Func<TArgs, TReturnValue> func) : this(id) => Delegate = func;
 
         [Obsolete("The priority no longer has any use", false)]
-        public CommandHolder(TID id, Func<TArgs, TReturnValue> func, int priority) : this(id, func) => Priority = priority;
+        public CommandHolder(TId id, Func<TArgs, TReturnValue> func, int priority) : this(id, func) => Priority = priority;
 
     }
 
