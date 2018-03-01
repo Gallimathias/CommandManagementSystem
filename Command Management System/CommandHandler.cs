@@ -24,7 +24,7 @@ namespace CommandManagementSystem
         /// </summary>
         public CommandHandler()
         {
-            mainList = new ConcurrentDictionary<TIn, CommandHolder<TIn, TParameter, TOut>>();
+            mainList = new CommandList<TIn, TParameter, TOut>();
             CommandQueue = new ConcurrentQueue<KeyValuePair<TIn, TParameter>>();
         }
 
@@ -42,12 +42,8 @@ namespace CommandManagementSystem
             }
             set
             {
-                if (mainList.ContainsKey(commandName))
-                    mainList.TryUpdate(commandName,
-                        new CommandHolder<TIn, TParameter, TOut>(commandName, value),
-                        mainList[commandName]);
-                else
-                    mainList.TryAdd(commandName, new CommandHolder<TIn, TParameter, TOut>(commandName, value));
+                if (!mainList.TryAdd(new CommandHolder<TIn, TParameter, TOut>(commandName, value)))
+                    mainList.TryUpdate(new CommandHolder<TIn, TParameter, TOut>(commandName, value));
             }
         }
 
