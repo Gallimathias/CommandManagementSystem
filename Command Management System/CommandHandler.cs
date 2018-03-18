@@ -17,14 +17,14 @@ namespace CommandManagementSystem
         /// </summary>
         public ConcurrentQueue<KeyValuePair<TIn, TParameter>> CommandQueue { get; private set; }
 
-        private CommandList<TIn, TParameter, TOut> mainList;
+        private CommandCollection<TIn, TParameter, TOut> mainList;
 
         /// <summary>
         /// Manages individual commands as events
         /// </summary>
         public CommandHandler()
         {
-            mainList = new CommandList<TIn, TParameter, TOut>();
+            mainList = new CommandCollection<TIn, TParameter, TOut>();
             CommandQueue = new ConcurrentQueue<KeyValuePair<TIn, TParameter>>();
         }
 
