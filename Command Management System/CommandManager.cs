@@ -83,8 +83,16 @@ namespace CommandManagementSystem
                     BindingFlags.Public |
                     BindingFlags.FlattenHierarchy)
                     .Invoke(null, new[] { command });
-                commandHandler[(TIn)command.GetCustomAttribute<CommandAttribute>().Tag] = (e)
-                    => InitializeCommand(command, e);
+                //commandHandler[(TIn)command.GetCustomAttribute<CommandAttribute>().Tag] = (e)
+                //    => InitializeCommand(command, e);
+
+                var commandAttribute = command.GetCustomAttribute<CommandAttribute>();
+                var holder = new CommandHolder<TIn, TParameter, TOut>((TIn)commandAttribute.Tag)
+                {
+                    Delegate = (e) => InitializeCommand(command, e),
+                    Aliases = commandAttribute.Aliases.Select(a => (TIn)a).ToArray()
+                };
+                commandHandler.TryAdd(holder);
             }
 
             InitializeOneTimeCommand(commandNamespace, types);
@@ -161,10 +169,13 @@ namespace CommandManagementSystem
         {
             var command = (ICommand<TParameter, TOut>)sender;
 
-            waitingDictionary.TryRemove((TIn)command.TAG, out Func<TParameter, TOut> method);
+            waitingDictionary.TryRemove((TIn)command.Tag, out Func<TParameter, TOut> method);
 
             if (command.Reinitialize)
-                commandHandler[(TIn)command.TAG] = (e) => InitializeCommand(command.GetType(), e);
+            {
+                commandHandler.TryUpdate((TIn)command.Tag, (e) => InitializeCommand(command.GetType(), e));
+                //commandHandler[(TIn)command.Tag] = (e) => InitializeCommand(command.GetType(), e);
+            }
 
             OnFinishedCommand?.Invoke(command, arg);
         }
@@ -173,7 +184,7 @@ namespace CommandManagementSystem
         /// </summary>
         /// <param name="sender">The triggering command</param>
         /// <param name="arg">The command parameters</param>
-        [Obsolete("This method has been renamed to CommandFinishEvent")]        
+        [Obsolete("This method has been renamed to CommandFinishEvent")]
         public virtual void Command_FinishEvent(object sender, TParameter arg) => CommandFinishEvent(sender, arg);
 
         /// <summary>
@@ -188,8 +199,8 @@ namespace CommandManagementSystem
 
             var command = (ICommand<TParameter, TOut>)sender;
 
-            if (!waitingDictionary.TryAdd((TIn)command.TAG, arg))
-                waitingDictionary.TryUpdate((TIn)command.TAG, arg, arg);
+            if (!waitingDictionary.TryAdd((TIn)command.Tag, arg))
+                waitingDictionary.TryUpdate((TIn)command.Tag, arg, arg);
         }
         /// <summary>
         /// This method is obsolete please use instead CommandWaitEvent.
@@ -225,8 +236,15 @@ namespace CommandManagementSystem
 
                 foreach (var member in members)
                 {
-                    commandHandler[(TIn)member.GetCustomAttribute<CommandAttribute>().Tag] = (Func<TParameter, TOut>)
-                        member.CreateDelegate(typeof(Func<TParameter, TOut>));
+                    var commandAttribute = member.GetCustomAttribute<CommandAttribute>();
+                    var commandHolder = new CommandHolder<TIn, TParameter, TOut>((TIn)commandAttribute.Tag)
+                    {
+                        Aliases = commandAttribute.Aliases.Select(a => (TIn)a).ToArray(),
+                        Delegate = (Func<TParameter, TOut>)member.CreateDelegate(typeof(Func<TParameter, TOut>))
+                    };
+                    commandHandler.TryAdd(commandHolder);
+                    //commandHandler[(TIn)member.GetCustomAttribute<CommandAttribute>().Tag] = (Func<TParameter, TOut>)
+                    //    member.CreateDelegate(typeof(Func<TParameter, TOut>));
                 }
 
             }

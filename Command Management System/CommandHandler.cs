@@ -17,14 +17,14 @@ namespace CommandManagementSystem
         /// </summary>
         public ConcurrentQueue<KeyValuePair<TIn, TParameter>> CommandQueue { get; private set; }
 
-        private CommandCollection<TIn, TParameter, TOut> mainList;
+        private CommandCollection<TIn, TParameter, TOut> mainCollection;
 
         /// <summary>
         /// Manages individual commands as events
         /// </summary>
         public CommandHandler()
         {
-            mainList = new CommandCollection<TIn, TParameter, TOut>();
+            mainCollection = new CommandCollection<TIn, TParameter, TOut>();
             CommandQueue = new ConcurrentQueue<KeyValuePair<TIn, TParameter>>();
         }
 
@@ -37,14 +37,10 @@ namespace CommandManagementSystem
         {
             get
             {
-                mainList.TryGetValue(commandName, out CommandHolder<TIn, TParameter, TOut> value);
+                mainCollection.TryGetValue(commandName, out CommandHolder<TIn, TParameter, TOut> value);
                 return value?.Delegate;
             }
-            set
-            {
-                if (!mainList.TryAdd(new CommandHolder<TIn, TParameter, TOut>(commandName, value)))
-                    mainList.TryUpdate(new CommandHolder<TIn, TParameter, TOut>(commandName, value));
-            }
+            set => TryAdd(new CommandHolder<TIn, TParameter, TOut>(commandName, value));            
         }
 
         /// <summary>
@@ -53,7 +49,7 @@ namespace CommandManagementSystem
         /// <param name="commandName">The command identifier</param>
         /// <param name="parameter">The parameters to be transferred</param>
         /// <returns>Returns the set value</returns>
-        public TOut Dispatch(TIn commandName, TParameter parameter) => mainList[commandName].Delegate(parameter);
+        public TOut Dispatch(TIn commandName, TParameter parameter) => mainCollection[commandName].Delegate(parameter);
 
         /// <summary>
         /// Does not dispose of a command until the submit method is called
@@ -84,7 +80,18 @@ namespace CommandManagementSystem
         /// </summary>
         /// <param name="commandName">The command identifier</param>
         /// <returns>Returns a true if the command is already registered</returns>
-        public bool CommandExists(TIn commandName) => mainList.ContainsKey(commandName);
+        public bool CommandExists(TIn commandName) => mainCollection.ContainsKey(commandName);
+
+        public bool TryAdd(CommandHolder<TIn, TParameter, TOut> commandHolder)
+        {
+            var returnValue = mainCollection.TryAdd(commandHolder);
+            if (!returnValue)
+               return mainCollection.TryUpdate(commandHolder);
+
+            return returnValue;
+        }
+
+        public bool TryUpdate(TIn tag, Func<TParameter, TOut> action) => mainCollection.TryUpdate(tag, action);
 
     }
 

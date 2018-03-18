@@ -7,13 +7,13 @@ using System.Threading;
 
 namespace CommandManagementSystem
 {
-    internal class CommandCollection<TId, TArgs, TReturnValue> : ICollection, IEnumerable, IDictionary
+    internal class CommandCollection<TTag, TArgs, TReturnValue> : ICollection, IEnumerable, IDictionary
     {
-        public CommandHolder<TId, TArgs, TReturnValue> this[TId commandName]
+        public CommandHolder<TTag, TArgs, TReturnValue> this[TTag commandName]
         {
             get
             {
-                TryGetValue(commandName, out CommandHolder<TId, TArgs, TReturnValue> value);
+                TryGetValue(commandName, out CommandHolder<TTag, TArgs, TReturnValue> value);
                 return value;
             }
             set
@@ -21,7 +21,7 @@ namespace CommandManagementSystem
                 TryAdd(value);
             }
         }
-        public CommandHolder<TId, TArgs, TReturnValue> this[int index]
+        public CommandHolder<TTag, TArgs, TReturnValue> this[int index]
         {
             get
             {
@@ -38,8 +38,8 @@ namespace CommandManagementSystem
         {
             get
             {
-                if (key is TId id)
-                    return this[id];
+                if (key is TTag tag)
+                    return this[tag];
                 else if (key is int index)
                     return this[index];
                 else
@@ -47,10 +47,10 @@ namespace CommandManagementSystem
             }
             set
             {
-                if (key is TId id)
-                    this[id] = (CommandHolder<TId, TArgs, TReturnValue>)value;
+                if (key is TTag tag)
+                    this[tag] = (CommandHolder<TTag, TArgs, TReturnValue>)value;
                 else if (key is int index)
-                    this[index] = (CommandHolder<TId, TArgs, TReturnValue>)value;
+                    this[index] = (CommandHolder<TTag, TArgs, TReturnValue>)value;
             }
         }
         public int Count
@@ -84,8 +84,8 @@ namespace CommandManagementSystem
             }
         }
 
-        private Dictionary<TId, int> keys;
-        private List<CommandHolder<TId, TArgs, TReturnValue>> items;
+        private Dictionary<TTag, int> keys;
+        private List<CommandHolder<TTag, TArgs, TReturnValue>> items;
         private Queue<int> freeSpace;
         private object itemsLock;
         private object keysLock;
@@ -93,21 +93,21 @@ namespace CommandManagementSystem
 
         public CommandCollection()
         {
-            keys = new Dictionary<TId, int>();
-            items = new List<CommandHolder<TId, TArgs, TReturnValue>>();
+            keys = new Dictionary<TTag, int>();
+            items = new List<CommandHolder<TTag, TArgs, TReturnValue>>();
             freeSpace = new Queue<int>();
             itemsLock = new object();
             keysLock = new object();
             globalIndex = 0;
         }
 
-        public bool TryAdd(CommandHolder<TId, TArgs, TReturnValue> commandHolder)
+        public bool TryAdd(CommandHolder<TTag, TArgs, TReturnValue> commandHolder)
         {
             int freeIndex;
 
             lock (keysLock)
             {
-                if (keys.ContainsKey(commandHolder.Id))
+                if (keys.ContainsKey(commandHolder.Tag))
                     return false;
             }
 
@@ -128,7 +128,7 @@ namespace CommandManagementSystem
 
             lock (keysLock)
             {
-                keys.Add(commandHolder.Id, freeIndex);
+                keys.Add(commandHolder.Tag, freeIndex);
 
                 for (int i = 0; i < commandHolder.Aliases.Length; i++)
                     keys.Add(commandHolder.Aliases[i], freeIndex);
@@ -137,14 +137,14 @@ namespace CommandManagementSystem
             return true;
         }
 
-        public bool TryUpdate(CommandHolder<TId, TArgs, TReturnValue> commandHolder)
+        public bool TryUpdate(CommandHolder<TTag, TArgs, TReturnValue> commandHolder)
         {
             bool keyExist;
             int index;
 
             lock (keysLock)
             {
-                keyExist = keys.TryGetValue(commandHolder.Id, out index);
+                keyExist = keys.TryGetValue(commandHolder.Tag, out index);
             }
 
             if (keyExist)
@@ -160,15 +160,28 @@ namespace CommandManagementSystem
             }
 
         }
+        public bool TryUpdate(TTag tag, Func<TArgs, TReturnValue> action)
+        {
+            int index;
 
-        public bool TryGetValue(TId id, out CommandHolder<TId, TArgs, TReturnValue> commandHolder)
+            lock (keysLock)
+                if(!keys.TryGetValue(tag, out index))
+                    return false;
+
+            lock (itemsLock)
+                items[index].Delegate = action;
+
+            return true;
+        }
+
+        public bool TryGetValue(TTag tag, out CommandHolder<TTag, TArgs, TReturnValue> commandHolder)
         {
             bool keyResult;
             int index;
             commandHolder = null;
 
             lock (keysLock)
-                keyResult = keys.TryGetValue(id, out index);
+                keyResult = keys.TryGetValue(tag, out index);
 
             if (keyResult)
             {
@@ -179,7 +192,7 @@ namespace CommandManagementSystem
             return keyResult;
         }
 
-        public bool ContainsKey(TId commandName)
+        public bool ContainsKey(TTag commandName)
         {
             lock (keysLock)
                 return keys.ContainsKey(commandName);
@@ -200,7 +213,7 @@ namespace CommandManagementSystem
         public IEnumerator GetEnumerator()
         {
             lock (itemsLock)
-                return items.Select(i => (i.Id, i.Aliases)).GetEnumerator();
+                return items.Select(i => new KeyValuePair<TTag, TTag[]>(i.Tag, i.Aliases)).GetEnumerator();
         }
 
         public void Add(object key, object value) => throw new NotSupportedException("Please use TryAdd instead");
@@ -221,14 +234,14 @@ namespace CommandManagementSystem
         public bool Contains(object key)
         {
             lock (keysLock)
-                return keys.ContainsKey((TId)key);
+                return keys.ContainsKey((TTag)key);
         }
 
         public void Remove(object key)
         {
             int index;
             lock (keysLock)
-                index = keys[(TId)key];
+                index = keys[(TTag)key];
 
             lock (itemsLock)
                 items[index] = null;
