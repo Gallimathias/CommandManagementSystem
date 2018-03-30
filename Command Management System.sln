@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Command Management System_n
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Command Management System", "Command Management System\Command Management System.csproj", "{5FFEC465-3BB3-41B6-AEA3-4F07F3CF8EAD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandManagementSystemTest", "CommandManagementSystemTest\CommandManagementSystemTest.csproj", "{E38F78CB-F376-4202-8705-C3318FAC0933}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5FFEC465-3BB3-41B6-AEA3-4F07F3CF8EAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FFEC465-3BB3-41B6-AEA3-4F07F3CF8EAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FFEC465-3BB3-41B6-AEA3-4F07F3CF8EAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E38F78CB-F376-4202-8705-C3318FAC0933}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E38F78CB-F376-4202-8705-C3318FAC0933}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E38F78CB-F376-4202-8705-C3318FAC0933}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E38F78CB-F376-4202-8705-C3318FAC0933}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
