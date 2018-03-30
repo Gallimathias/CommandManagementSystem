@@ -165,7 +165,7 @@ namespace CommandManagementSystem
         /// </summary>
         /// <param name="sender">The triggering command</param>
         /// <param name="arg">The command parameters</param>
-        public virtual void CommandFinishEvent(object sender, TParameter arg)
+        protected virtual void CommandFinishEvent(object sender, TParameter arg)
         {
             var command = (ICommand<TParameter, TOut>)sender;
 
@@ -192,7 +192,7 @@ namespace CommandManagementSystem
         /// </summary>
         /// <param name="sender">The triggering command</param>
         /// <param name="arg">The dispatch method</param>
-        public virtual void CommandWaitEvent(object sender, Func<TParameter, TOut> arg)
+        protected virtual void CommandWaitEvent(object sender, Func<TParameter, TOut> arg)
         {
             if (arg == null && sender == null)
                 return;
