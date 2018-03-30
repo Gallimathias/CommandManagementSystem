@@ -22,7 +22,7 @@ namespace ConsoleApp
 
         private void ConsoleManager_OnFinishedCommand(ICommand<string, bool> command, string arg)
         {
-            Console.WriteLine($"Command is Finish: {command.TAG}");
+            Console.WriteLine($"Command is Finish: {command.Tag}");
         }
     }
 }
