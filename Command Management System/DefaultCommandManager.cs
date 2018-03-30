@@ -46,13 +46,13 @@ namespace CommandManagementSystem
 
             foreach (var command in commands)
             {
-                //command.GetMethod(
-                //   "Register",
-                //   BindingFlags.Static |
-                //   BindingFlags.Public |
-                //   BindingFlags.FlattenHierarchy)
-                //   .Invoke(null, new[] { command });
-                command.GetRuntimeMethod("Register", new[] { typeof(Type) }).Invoke(null, new[] { command });
+                command.GetMethod(
+                   "Register",
+                   BindingFlags.Static |
+                   BindingFlags.Public |
+                   BindingFlags.FlattenHierarchy)
+                   .Invoke(null, new[] { command });
+                //command.GetRuntimeMethod("Register", new[] { typeof(Type) }).Invoke(null, new[] { command });
 
                 var commandAttribute = command.GetCustomAttribute<CommandAttribute>();
                 var commandHolder = new CommandHolder<TIn, TParameter, TOut>((TIn)commandAttribute.Tag)

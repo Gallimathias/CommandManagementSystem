@@ -25,6 +25,7 @@ namespace CommandManagementSystem
         /// Dictionary with waiting commands
         /// </summary>
         protected ConcurrentDictionary<TIn, Func<TParameter, TOut>> waitingDictionary;
+        protected ConcurrentDictionary<TIn, TIn[]> aliasDictionary;
 
         /// <summary>
         /// Delegate for command manager events
@@ -48,6 +49,7 @@ namespace CommandManagementSystem
         public CommandManager(bool initialize)
         {
             commandHandler = new CommandHandler<TIn, TParameter, TOut>();
+            aliasDictionary = new ConcurrentDictionary<TIn, TIn[]>();
             waitingDictionary = new ConcurrentDictionary<TIn, Func<TParameter, TOut>>();
 
             if (initialize)
@@ -94,6 +96,7 @@ namespace CommandManagementSystem
                     Aliases = commandAttribute.Aliases.Select(a => (TIn)a).ToArray()
                 };
                 commandHandler.TryAdd(holder);
+                aliasDictionary.TryAdd(holder.Tag, holder.Aliases);
             }
 
             InitializeOneTimeCommand(commandNamespace, types);
@@ -107,6 +110,9 @@ namespace CommandManagementSystem
         /// <returns>Returns the result of the dispatch</returns>
         public virtual TOut Dispatch(TIn command, TParameter arg)
         {
+            if (!aliasDictionary.ContainsKey(command))
+                command = aliasDictionary.FirstOrDefault(t => t.Value.Contains(command)).Key;
+
             if (waitingDictionary.ContainsKey(command))
             {
                 if (!waitingDictionary.TryGetValue(command, out Func<TParameter, TOut> method))
@@ -246,6 +252,7 @@ namespace CommandManagementSystem
                         Delegate = (Func<TParameter, TOut>)member.CreateDelegate(typeof(Func<TParameter, TOut>))
                     };
                     commandHandler.TryAdd(commandHolder);
+                    aliasDictionary.TryAdd(commandHolder.Tag, commandHolder.Aliases);
                     //commandHandler[(TIn)member.GetCustomAttribute<CommandAttribute>().Tag] = (Func<TParameter, TOut>)
                     //    member.CreateDelegate(typeof(Func<TParameter, TOut>));
                 }
