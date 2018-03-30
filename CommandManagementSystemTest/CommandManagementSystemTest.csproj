@@ -48,6 +48,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DefaultManagerTest.cs" />
     <Compile Include="InstancedTest.cs" />
     <Compile Include="ComplexCommand.cs" />
     <Compile Include="Manager.cs" />
