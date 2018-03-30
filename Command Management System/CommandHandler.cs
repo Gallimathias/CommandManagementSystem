@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CommandManagementSystem
 {
@@ -92,6 +93,8 @@ namespace CommandManagementSystem
         }
 
         public bool TryUpdate(TIn tag, Func<TParameter, TOut> action) => mainCollection.TryUpdate(tag, action);
+
+        public List<KeyValuePair<TIn, TIn[]>> GetTagList() => mainCollection.GetTagList().ToList();
 
     }
 

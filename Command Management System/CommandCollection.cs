@@ -160,6 +160,13 @@ namespace CommandManagementSystem
             }
 
         }
+
+        public IEnumerable<KeyValuePair<TTag, TTag[]>> GetTagList()
+        {
+            lock (itemsLock)
+                return items.Select(i => new KeyValuePair<TTag, TTag[]>(i.Tag, i.Aliases));
+        }
+
         public bool TryUpdate(TTag tag, Func<TArgs, TReturnValue> action)
         {
             int index;
@@ -210,11 +217,7 @@ namespace CommandManagementSystem
             }
         }
 
-        public IEnumerator GetEnumerator()
-        {
-            lock (itemsLock)
-                return items.Select(i => new KeyValuePair<TTag, TTag[]>(i.Tag, i.Aliases)).GetEnumerator();
-        }
+        public IEnumerator GetEnumerator() => GetTagList().GetEnumerator();
 
         public void Add(object key, object value) => throw new NotSupportedException("Please use TryAdd instead");
 

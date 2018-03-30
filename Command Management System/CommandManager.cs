@@ -2,6 +2,7 @@
 using CommandManagementSystem.Interfaces;
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
@@ -159,6 +160,8 @@ namespace CommandManagementSystem
         /// <returns>Returns the result of the initialize</returns>
         public virtual TOut InitializeCommand(Type commandType, TParameter arg, params object[] startParams) =>
             InitializeCommand((ICommand<TParameter, TOut>)Activator.CreateInstance(commandType, startParams), arg);
+
+        public List<KeyValuePair<TIn, TIn[]>> GetCommandTagList() => commandHandler.GetTagList();
 
         /// <summary>
         /// Executed when a command is finished
