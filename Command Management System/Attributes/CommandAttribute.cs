@@ -15,7 +15,7 @@ namespace CommandManagementSystem.Attributes
         /// <summary>
         /// Alternate names for the command
         /// </summary>
-        public readonly string[] Aliases;
+        public readonly object[] Aliases;
         /// <summary>
         /// Returns a true if the command is to be reinitialized
         /// </summary>
@@ -26,7 +26,7 @@ namespace CommandManagementSystem.Attributes
         /// </summary>
         /// <param name="tag">Uniquely identifies the command</param>
         /// <param name="aliases">Alternate names for the command</param>
-        public CommandAttribute(object tag, params string[] aliases)
+        public CommandAttribute(object tag, params object[] aliases)
         {
             Tag = tag;
             Aliases = aliases;
@@ -38,7 +38,7 @@ namespace CommandManagementSystem.Attributes
         /// <param name="tag">Uniquely identifies the command</param>
         /// <param name="reinitialize">Specifies whether the command is to be reinitialized.</param>
         /// <param name="aliases">Alternate names for the command</param>
-        public CommandAttribute(object tag, bool reinitialize, params string[] aliases) 
+        public CommandAttribute(object tag, bool reinitialize, params object[] aliases) 
             : this(tag, aliases)
         {
             Reinitialize = reinitialize;

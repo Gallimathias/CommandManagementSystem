@@ -18,5 +18,19 @@ namespace CommandManagementSystemTest
             }
 
         }
+
+        [TestMethod]
+        public void AliasTest()
+        {
+            var manager = new Manager();
+
+            for (int i = 0; i < 10; i++)
+            {
+                Assert.AreEqual(1, manager.Dispatch("test", ""));
+                Assert.AreEqual(2, manager.Dispatch("test", ""));
+                Assert.AreEqual(1, manager.Dispatch("t", ""));
+                Assert.AreEqual(2, manager.Dispatch("t", ""));
+            }
+        }
     }
 }

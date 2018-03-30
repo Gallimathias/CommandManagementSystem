@@ -13,7 +13,7 @@ using System.Runtime.InteropServices;
 #endif
 #endregion AssemblyConfiguration
 [assembly: AssemblyCompany("www.gallimathias.de")]
-[assembly: AssemblyProduct("Command Management System-alpha1")]
+[assembly: AssemblyProduct("Command Management System-alpha2")]
 [assembly: AssemblyCopyright("Copyright 2018 gallimathias. Licensed under Apache License Version 2.0")]
 
 [assembly: ComVisible(false)]

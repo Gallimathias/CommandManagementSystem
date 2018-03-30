@@ -2,45 +2,57 @@
 
 namespace CommandManagementSystem
 {
-    internal class CommandHolder<TID, TArgs, TReturnValue>
+    public class CommandHolder<TTag, TArgs, TReturnValue>
     {
         public Func<TArgs, TReturnValue> Delegate { get; set; }
 
-        public TID ID { get; private set; }
+        public TTag Tag { get; private set; }
+        public TTag[] Aliases { get; internal set; }
+
+        [Obsolete("The priority no longer has any use", false)]
         public int Priority { get; private set; }
 
-        public CommandHolder(TID id) => ID = id;
+        public CommandHolder(TTag tag)
+        {
+            Aliases = new TTag[0];
+            Tag = tag;
+        }
 
-        public CommandHolder(TID id, Func<TArgs, TReturnValue> func) : this(id) => Delegate = func;
-        public CommandHolder(TID id, Func<TArgs, TReturnValue> func, int priority) : this(id, func) => Priority = priority;
+        public CommandHolder(TTag tag, Func<TArgs, TReturnValue> func) : this(tag) => Delegate = func;
 
-    }
-
-    internal class CommandHolder<TArgs, TReturnValue> : CommandHolder<string, TArgs, TReturnValue>
-    {
-        public CommandHolder(string id) : base(id) { }
-
-        public CommandHolder(string id, Func<TArgs, TReturnValue> func) : base(id, func) { }
-
-        public CommandHolder(string id, Func<TArgs, TReturnValue> func, int priority) : base(id, func, priority) { }
+        [Obsolete("The priority no longer has any use", false)]
+        public CommandHolder(TTag tag, Func<TArgs, TReturnValue> func, int priority) : this(tag, func) => Priority = priority;
 
     }
 
-    internal class CommandHolder<TArgs> : CommandHolder<TArgs, dynamic>
+    public class CommandHolder<TArgs, TReturnValue> : CommandHolder<string, TArgs, TReturnValue>
     {
-        public CommandHolder(string id) : base(id) { }
-        public CommandHolder(string id, Func<TArgs, dynamic> func) : base(id, func) { }
+        public CommandHolder(string tag) : base(tag) { }
 
-        public CommandHolder(string id, Func<TArgs, dynamic> func, int priority) : base(id, func, priority) { }
+        public CommandHolder(string tag, Func<TArgs, TReturnValue> func) : base(tag, func) { }
+
+        [Obsolete("The priority no longer has any use", false)]
+        public CommandHolder(string tag, Func<TArgs, TReturnValue> func, int priority) : base(tag, func, priority) { }
+
     }
 
-    internal class CommandHolder : CommandHolder<object>
+    public class CommandHolder<TArgs> : CommandHolder<TArgs, dynamic>
     {
-        public CommandHolder(string id) : base(id) { }
+        public CommandHolder(string tag) : base(tag) { }
+        public CommandHolder(string tag, Func<TArgs, dynamic> func) : base(tag, func) { }
 
-        public CommandHolder(string id, Func<object, dynamic> func) : base(id, func) { }
+        [Obsolete("The priority no longer has any use", false)]
+        public CommandHolder(string tag, Func<TArgs, dynamic> func, int priority) : base(tag, func, priority) { }
+    }
 
-        public CommandHolder(string id, Func<object, dynamic> func, int priority) : base(id, func, priority) { }
+    public class CommandHolder : CommandHolder<object>
+    {
+        public CommandHolder(string tag) : base(tag) { }
+
+        public CommandHolder(string tag, Func<object, dynamic> func) : base(tag, func) { }
+
+        [Obsolete("The priority no longer has any use", false)]
+        public CommandHolder(string tag, Func<object, dynamic> func, int priority) : base(tag, func, priority) { }
     }
 
 }

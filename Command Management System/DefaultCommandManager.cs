@@ -1,16 +1,13 @@
 ﻿using CommandManagementSystem.Attributes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
 namespace CommandManagementSystem
 {
-    /// <summary>
-    /// A standard implementation of a Command Manager. 
-    /// Command = string, parameter = object [], return type = dynamic
-    /// </summary>
     [CommandManager("DefaultCommandManager")]
-    public class DefaultCommandManager : CommandManager<string, object[], dynamic>
+    public class DefaultCommandManager<TIn, TParameter, TOut> : CommandManager<TIn, TParameter, TOut>
     {
         /// <summary>
         /// Namespaces that were registered in the default Command Manager
@@ -55,8 +52,17 @@ namespace CommandManagementSystem
                    BindingFlags.Public |
                    BindingFlags.FlattenHierarchy)
                    .Invoke(null, new[] { command });
-                commandHandler[(string)command.GetCustomAttribute<CommandAttribute>().Tag] = (e)
-                    => InitializeCommand(command, e);
+                //command.GetRuntimeMethod("Register", new[] { typeof(Type) }).Invoke(null, new[] { command });
+
+                var commandAttribute = command.GetCustomAttribute<CommandAttribute>();
+                var commandHolder = new CommandHolder<TIn, TParameter, TOut>((TIn)commandAttribute.Tag)
+                {
+                    Aliases = commandAttribute.Aliases.Select(a => (TIn)a).ToArray(),
+                    Delegate = (e) => InitializeCommand(command, e)
+                };
+                commandHandler.TryAdd(commandHolder);
+                //commandHandler[(string)command.GetCustomAttribute<CommandAttribute>().Tag] = (e)
+                //  => InitializeCommand(command, e);
             }
 
             InitializeOneTimeCommand(Namespaces.ToArray(), assembly.GetTypes());
@@ -74,4 +80,13 @@ namespace CommandManagementSystem
         /// </summary>
         public override void Initialize() { }
     }
+
+    [CommandManager("DefaultCommandManager")]
+    public class DefaultCommandManager<TParameter, TOut> : DefaultCommandManager<string, TParameter, TOut> { }
+
+    [CommandManager("DefaultCommandManager")]
+    public class DefaultCommandManager<TParameter> : DefaultCommandManager<TParameter, dynamic> { }
+
+    [CommandManager("DefaultCommandManager")]
+    public class DefaultCommandManager : DefaultCommandManager<object> { }
 }

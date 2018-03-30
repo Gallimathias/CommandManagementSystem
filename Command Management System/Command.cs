@@ -47,7 +47,7 @@ namespace CommandManagementSystem
         /// <summary>
         /// Unique Indentifikator for the command
         /// </summary>
-        public virtual object TAG => tag;
+        public virtual object Tag => tag;
 
         /// <summary>
         /// Is thrown when the command has gone through all steps
@@ -121,7 +121,7 @@ namespace CommandManagementSystem
         /// Returns the current tag of the command by calling the ToString method of the command tag.
         /// </summary>
         /// <returns>Returns the tag of the command</returns>
-        public override string ToString() => $"{TAG}";
+        public override string ToString() => $"{Tag}";
 
         /// <summary>
         /// Registers the class in its static components. 

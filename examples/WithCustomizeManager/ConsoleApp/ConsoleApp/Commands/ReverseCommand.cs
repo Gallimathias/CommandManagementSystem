@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp.Commands
 {
-    [Command("/reverse")] //Complex command with several versions and stages
+    [Command("/reverse", "/r")] //Complex command with several versions and stages
     public class ReverseCommand : Command<string, bool>
     {
         Random rand;

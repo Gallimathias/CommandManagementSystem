@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CommandManagementSystemTest
 {
-    [Command("test")]
+    [Command("test", "t")]
     public class ComplexCommand : Command<string, int>
     {
         public ComplexCommand()

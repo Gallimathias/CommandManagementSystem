@@ -9,7 +9,7 @@ namespace ConsoleApp.Commands
 {
     static class OneTimeCommands
     {
-        [Command("/hello")] //Single command without generating an object executed with /hello
+        [Command("/hello", "/h")] //Single command without generating an object executed with /hello
         public static bool Hello(string arg)
         {
             Console.WriteLine("Hello");

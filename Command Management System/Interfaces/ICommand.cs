@@ -40,7 +40,7 @@ namespace CommandManagementSystem.Interfaces
         /// <summary>
         /// Unique Indentifikator for the command
         /// </summary>
-        object TAG { get; }
+        object Tag { get; }
 
         /// <summary>
         /// Is thrown when the command waits for the next dispatch
