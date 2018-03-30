@@ -26,7 +26,8 @@ namespace CommandManagementSystem
         public DefaultCommandManager(params string[] namespaces)
         {
             Namespaces = new List<string>();
-            Initialize(Assembly.GetCallingAssembly(), namespaces);
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+                Initialize(assembly, namespaces);
         }
 
         /// <summary>
@@ -61,6 +62,7 @@ namespace CommandManagementSystem
                     Delegate = (e) => InitializeCommand(command, e)
                 };
                 commandHandler.TryAdd(commandHolder);
+                aliasDictionary.TryAdd(commandHolder.Tag, commandHolder.Aliases);
                 //commandHandler[(string)command.GetCustomAttribute<CommandAttribute>().Tag] = (e)
                 //  => InitializeCommand(command, e);
             }
@@ -68,11 +70,11 @@ namespace CommandManagementSystem
             InitializeOneTimeCommand(Namespaces.ToArray(), assembly.GetTypes());
             IsInitialized = true;
         }
-        /// <summary>
-        /// Initalizes the manager with the specified namespaces in the calling assembly of this method
-        /// </summary>
-        /// <param name="namespaces">Namespace to be registered in the manager</param>
-        public void Initialize(params string[] namespaces) => Initialize(Assembly.GetCallingAssembly(), namespaces);
+        public void Initialize(params string[] namespaces)
+        {
+            foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
+                Initialize(assembly, namespaces);
+        }
 
         /// <summary>
         /// The overwritten default initialization method. 
@@ -82,11 +84,20 @@ namespace CommandManagementSystem
     }
 
     [CommandManager("DefaultCommandManager")]
-    public class DefaultCommandManager<TParameter, TOut> : DefaultCommandManager<string, TParameter, TOut> { }
+    public class DefaultCommandManager<TParameter, TOut> : DefaultCommandManager<string, TParameter, TOut>
+    {
+        public DefaultCommandManager(params string[] namespaces) : base(namespaces) { }
+    }
 
     [CommandManager("DefaultCommandManager")]
-    public class DefaultCommandManager<TParameter> : DefaultCommandManager<TParameter, dynamic> { }
+    public class DefaultCommandManager<TParameter> : DefaultCommandManager<TParameter, object>
+    {
+        public DefaultCommandManager(params string[] namespaces) : base(namespaces) { }
+    }
 
     [CommandManager("DefaultCommandManager")]
-    public class DefaultCommandManager : DefaultCommandManager<object> { }
+    public class DefaultCommandManager : DefaultCommandManager<object>
+    {
+        public DefaultCommandManager(params string[] namespaces) : base(namespaces) { }
+    }
 }
