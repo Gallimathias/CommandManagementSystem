@@ -53,7 +53,6 @@ namespace CommandManagementSystem
                    BindingFlags.Public |
                    BindingFlags.FlattenHierarchy)
                    .Invoke(null, new[] { command });
-                //command.GetRuntimeMethod("Register", new[] { typeof(Type) }).Invoke(null, new[] { command });
 
                 var commandAttribute = command.GetCustomAttribute<CommandAttribute>();
                 var commandHolder = new CommandHolder<TIn, TParameter, TOut>((TIn)commandAttribute.Tag)
@@ -63,8 +62,6 @@ namespace CommandManagementSystem
                 };
                 commandHandler.TryAdd(commandHolder);
                 aliasDictionary.TryAdd(commandHolder.Tag, commandHolder.Aliases);
-                //commandHandler[(string)command.GetCustomAttribute<CommandAttribute>().Tag] = (e)
-                //  => InitializeCommand(command, e);
             }
 
             InitializeOneTimeCommand(Namespaces.ToArray(), assembly.GetTypes());
