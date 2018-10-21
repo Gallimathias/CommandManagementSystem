@@ -41,7 +41,7 @@ namespace CommandManagementSystem
                 mainCollection.TryGetValue(commandName, out CommandHolder<TIn, TParameter, TOut> value);
                 return value?.Delegate;
             }
-            set => TryAdd(new CommandHolder<TIn, TParameter, TOut>(commandName, value));            
+            set => TryAdd(new CommandHolder<TIn, TParameter, TOut>(commandName, value));
         }
 
         /// <summary>
@@ -50,14 +50,16 @@ namespace CommandManagementSystem
         /// <param name="commandName">The command identifier</param>
         /// <param name="parameter">The parameters to be transferred</param>
         /// <returns>Returns the set value</returns>
-        public TOut Dispatch(TIn commandName, TParameter parameter) => mainCollection[commandName].Delegate(parameter);
+        public TOut Dispatch(TIn commandName, TParameter parameter)
+            => mainCollection[commandName].Delegate(parameter);
 
         /// <summary>
         /// Does not dispose of a command until the submit method is called
         /// </summary>
         /// <param name="commandName">The command identifier</param>
         /// <param name="parameter">The parameters to be transferred</param>
-        public void DispatchOnSubmit(TIn commandName, TParameter parameter) => CommandQueue.Enqueue(new KeyValuePair<TIn, TParameter>(commandName, parameter));
+        public void DispatchOnSubmit(TIn commandName, TParameter parameter)
+            => CommandQueue.Enqueue(new KeyValuePair<TIn, TParameter>(commandName, parameter));
 
         /// <summary>
         /// Dispatch all commands in que
@@ -87,14 +89,16 @@ namespace CommandManagementSystem
         {
             var returnValue = mainCollection.TryAdd(commandHolder);
             if (!returnValue)
-               return mainCollection.TryUpdate(commandHolder);
+                return mainCollection.TryUpdate(commandHolder);
 
             return returnValue;
         }
 
-        public bool TryUpdate(TIn tag, Func<TParameter, TOut> action) => mainCollection.TryUpdate(tag, action);
+        public bool TryUpdate(TIn tag, Func<TParameter, TOut> action)
+            => mainCollection.TryUpdate(tag, action);
 
-        public List<KeyValuePair<TIn, TIn[]>> GetTagList() => mainCollection.GetTagList().ToList();
+        public List<KeyValuePair<TIn, TIn[]>> GetTagList()
+            => mainCollection.GetTagList().ToList();
 
     }
 

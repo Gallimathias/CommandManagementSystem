@@ -86,8 +86,6 @@ namespace CommandManagementSystem
                     BindingFlags.Public |
                     BindingFlags.FlattenHierarchy)
                     .Invoke(null, new[] { command });
-                //commandHandler[(TIn)command.GetCustomAttribute<CommandAttribute>().Tag] = (e)
-                //    => InitializeCommand(command, e);
 
                 var commandAttribute = command.GetCustomAttribute<CommandAttribute>();
                 var holder = new CommandHolder<TIn, TParameter, TOut>((TIn)commandAttribute.Tag)
@@ -132,8 +130,8 @@ namespace CommandManagementSystem
         /// <param name="command">The command Indentifier</param>
         /// <param name="arg">The parameters to be transferred</param>
         /// <returns>Returns the result of the dispatch</returns>
-        public virtual Task<TOut> DispatchAsync(TIn command, TParameter arg) =>
-            Task.Run(() => Dispatch(command, arg));
+        public virtual Task<TOut> DispatchAsync(TIn command, TParameter arg)
+            => Task.Run(() => Dispatch(command, arg));
 
         /// <summary>
         /// Initializes the passed command with the parameters
@@ -167,7 +165,8 @@ namespace CommandManagementSystem
         public virtual TOut InitializeCommand(Type commandType, TParameter arg, params object[] startParams) =>
             InitializeCommand((ICommand<TParameter, TOut>)Activator.CreateInstance(commandType, startParams), arg);
 
-        public List<KeyValuePair<TIn, TIn[]>> GetCommandTagList() => commandHandler.GetTagList();
+        public List<KeyValuePair<TIn, TIn[]>> GetCommandTagList()
+            => commandHandler.GetTagList();
 
         /// <summary>
         /// Executed when a command is finished
@@ -183,7 +182,6 @@ namespace CommandManagementSystem
             if (command.Reinitialize)
             {
                 commandHandler.TryUpdate((TIn)command.Tag, (e) => InitializeCommand(command.GetType(), e));
-                //commandHandler[(TIn)command.Tag] = (e) => InitializeCommand(command.GetType(), e);
             }
 
             OnFinishedCommand?.Invoke(command, arg);
@@ -194,7 +192,8 @@ namespace CommandManagementSystem
         /// <param name="sender">The triggering command</param>
         /// <param name="arg">The command parameters</param>
         [Obsolete("This method has been renamed to CommandFinishEvent")]
-        public virtual void Command_FinishEvent(object sender, TParameter arg) => CommandFinishEvent(sender, arg);
+        public virtual void Command_FinishEvent(object sender, TParameter arg)
+            => CommandFinishEvent(sender, arg);
 
         /// <summary>
         /// Executed when a command is waiting
@@ -217,7 +216,8 @@ namespace CommandManagementSystem
         /// <param name="sender">The triggering command</param>
         /// <param name="arg">The dispatch method</param>
         [Obsolete("This method has been renamed to CommandWaitEvent")]
-        public virtual void Command_WaitEvent(object sender, Func<TParameter, TOut> arg) => CommandWaitEvent(sender, arg);
+        public virtual void Command_WaitEvent(object sender, Func<TParameter, TOut> arg)
+            => CommandWaitEvent(sender, arg);
 
         /// <summary>
         /// Searches and registers all methods in the given namespace in the TypeArray,
@@ -234,12 +234,6 @@ namespace CommandManagementSystem
             {
                 var members = commandClass
                     .GetRuntimeMethods()
-                    //.GetMembers(
-                    //    BindingFlags.NonPublic |
-                    //    BindingFlags.Public |
-                    //    BindingFlags.Instance |
-                    //    BindingFlags.FlattenHierarchy |
-                    //    BindingFlags.Static)
                     .Where(
                         m => m.GetCustomAttribute<CommandAttribute>() != null);
 
@@ -253,8 +247,6 @@ namespace CommandManagementSystem
                     };
                     commandHandler.TryAdd(commandHolder);
                     aliasDictionary.TryAdd(commandHolder.Tag, commandHolder.Aliases);
-                    //commandHandler[(TIn)member.GetCustomAttribute<CommandAttribute>().Tag] = (Func<TParameter, TOut>)
-                    //    member.CreateDelegate(typeof(Func<TParameter, TOut>));
                 }
 
             }

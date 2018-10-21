@@ -87,8 +87,8 @@ namespace CommandManagementSystem
         private Dictionary<TTag, int> keys;
         private List<CommandHolder<TTag, TArgs, TReturnValue>> items;
         private Queue<int> freeSpace;
-        private object itemsLock;
-        private object keysLock;
+        private readonly object itemsLock;
+        private readonly object keysLock;
         private int globalIndex;
 
         public CommandCollection()
@@ -172,7 +172,7 @@ namespace CommandManagementSystem
             int index;
 
             lock (keysLock)
-                if(!keys.TryGetValue(tag, out index))
+                if (!keys.TryGetValue(tag, out index))
                     return false;
 
             lock (itemsLock)
@@ -217,9 +217,11 @@ namespace CommandManagementSystem
             }
         }
 
-        public IEnumerator GetEnumerator() => GetTagList().GetEnumerator();
+        public IEnumerator GetEnumerator()
+            => GetTagList().GetEnumerator();
 
-        public void Add(object key, object value) => throw new NotSupportedException("Please use TryAdd instead");
+        public void Add(object key, object value)
+            => throw new NotSupportedException("Please use TryAdd instead");
 
         public void Clear()
         {

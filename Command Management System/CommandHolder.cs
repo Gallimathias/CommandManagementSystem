@@ -18,10 +18,12 @@ namespace CommandManagementSystem
             Tag = tag;
         }
 
-        public CommandHolder(TTag tag, Func<TArgs, TReturnValue> func) : this(tag) => Delegate = func;
+        public CommandHolder(TTag tag, Func<TArgs, TReturnValue> func) : this(tag)
+            => Delegate = func;
 
         [Obsolete("The priority no longer has any use", false)]
-        public CommandHolder(TTag tag, Func<TArgs, TReturnValue> func, int priority) : this(tag, func) => Priority = priority;
+        public CommandHolder(TTag tag, Func<TArgs, TReturnValue> func, int priority) : this(tag, func)
+            => Priority = priority;
 
     }
 
