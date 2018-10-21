@@ -14,6 +14,11 @@
     <DebugSymbols>false</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Exceptions\**" />
+    <EmbeddedResource Remove="Exceptions\**" />
+    <None Remove="Exceptions\**" />
+  </ItemGroup>
+  <ItemGroup>
     <None Remove="LICENSE" />
     <None Remove="NOTICE" />
   </ItemGroup>
@@ -24,8 +29,5 @@
     <Content Include="NOTICE">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Exceptions\" />
   </ItemGroup>
 </Project>
