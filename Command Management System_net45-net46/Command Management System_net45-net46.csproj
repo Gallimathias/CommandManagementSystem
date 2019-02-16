@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\Command Management System\Attributes\CommandAttribute.cs" />
+    <Compile Include="..\Command Management System\Attributes\StringCommandAttribute.cs" />
     <Compile Include="..\Command Management System\Attributes\CommandManagerAttribute.cs" />
     <Compile Include="..\Command Management System\Attributes\DispatchOrderAttribute.cs" />
     <Compile Include="..\Command Management System\Command.cs" />

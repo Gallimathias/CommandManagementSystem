@@ -225,7 +225,7 @@ namespace CommandManagementSystem
         /// </summary>
         /// <param name="namespaces">Namespaces in which the method searches</param>
         /// <param name="types">TypeArray that searches the method</param>
-        protected void InitializeOneTimeCommand(string[] namespaces, Type[] types)
+        protected virtual void InitializeOneTimeCommand(string[] namespaces, Type[] types)
         {
             var commandClasses = types.Where(
                 t => namespaces.Contains(t.Namespace)).ToArray();
