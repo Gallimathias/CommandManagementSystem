@@ -30,4 +30,8 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="..\CommandManagementSystem.Shared\CommandManagementSystem.Shared.projitems" Label="Shared" />
 </Project>

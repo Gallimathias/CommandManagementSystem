@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>0c6d4f88-ffcd-4b5a-a0ca-c836ec9b9345</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>CommandManagementSystem.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AssemblyInfo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\CommandAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\CommandManagerAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\DispatchOrderAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Attributes\StringCommandAttribute.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Command.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CommandCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CommandHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CommandHolder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CommandManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DefaultCommandManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ICommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Interfaces\ICommandManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StringCommandManager.cs" />
+  </ItemGroup>
+</Project>

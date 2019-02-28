@@ -57,26 +57,11 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\Command Management System\Attributes\CommandAttribute.cs" />
-    <Compile Include="..\Command Management System\Attributes\StringCommandAttribute.cs" />
-    <Compile Include="..\Command Management System\Attributes\CommandManagerAttribute.cs" />
-    <Compile Include="..\Command Management System\Attributes\DispatchOrderAttribute.cs" />
-    <Compile Include="..\Command Management System\Command.cs" />
-    <Compile Include="..\Command Management System\CommandHandler.cs" />
-    <Compile Include="..\Command Management System\CommandHolder.cs" />
-    <Compile Include="..\Command Management System\CommandCollection.cs" />
-    <Compile Include="..\Command Management System\CommandManager.cs" />
-    <Compile Include="..\Command Management System\DefaultCommandManager.cs" />
-    <Compile Include="..\Command Management System\GlobalSuppressions.cs" />
-    <Compile Include="..\Command Management System\Interfaces\ICommand.cs" />
-    <Compile Include="..\Command Management System\Interfaces\ICommandManager.cs" />
-    <Compile Include="..\Command Management System\Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\Command Management System\CoMaS.pfx" />
     <Content Include="..\Command Management System\LICENSE" />
     <Content Include="..\Command Management System\NOTICE" />
   </ItemGroup>
+  <Import Project="..\CommandManagementSystem.Shared\CommandManagementSystem.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
