@@ -54,7 +54,7 @@ namespace CommandManagementSystem
                    BindingFlags.FlattenHierarchy)
                    .Invoke(null, new[] { command });
 
-                var commandAttribute = command.GetCustomAttribute<CommandAttribute>();
+                var commandAttribute = command.GetCustomAttribute<StringCommandAttribute>();
                 var commandHolder = new CommandHolder<string, TParameter, TOut>(command.Name)
                 {
                     Aliases = commandAttribute.Aliases.Select(a => (string)a).ToArray(),
@@ -87,7 +87,7 @@ namespace CommandManagementSystem
 
                 foreach (var member in members)
                 {
-                    var commandAttribute = member.GetCustomAttribute<CommandAttribute>();
+                    var commandAttribute = member.GetCustomAttribute<StringCommandAttribute>();
                     var commandHolder = new CommandHolder<string, TParameter, TOut>(member.Name)
                     {
                         Aliases = commandAttribute.Aliases.Select(a => (string)a).ToArray(),

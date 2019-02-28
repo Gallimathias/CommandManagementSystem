@@ -138,8 +138,17 @@ namespace CommandManagementSystem
         {
             var attribute = type.GetCustomAttribute<CommandAttribute>();
 
-            tag = attribute.Tag;
-            reinitialize = attribute.Reinitialize;
+            if (attribute != null)
+            {
+                tag = attribute.Tag;
+                reinitialize = attribute.Reinitialize;
+            }
+            else
+            {
+                var stringAttribute = type.GetCustomAttribute<StringCommandAttribute>();
+                tag = type.Name;
+                reinitialize = stringAttribute.Reinitialize;
+            }
 
             var actions = type
                 .GetRuntimeMethods()

@@ -27,5 +27,40 @@ namespace CommandManagementSystemTest
         {
             return 2;
         }
+
+        [Command("Default")]
+        public static int DefaultCommand(string args)
+        {
+            return 14;
+        }
     }
+
+    [StringCommand]
+    public class StringComplex : Command<string, int>
+    {
+        public StringComplex()
+        {
+
+        }
+
+        [DispatchOrder(0)]
+        public int ExecuteFirst(string args)
+        {
+            return 1;
+        }
+
+        [DispatchOrder(1)]
+        public int ExecuteSecond(string args)
+        {
+            return 2;
+        }
+
+        
+        [StringCommand]
+        public static int DefaultString(string args)
+        {
+            return 14;
+        }
+    }
+
 }
