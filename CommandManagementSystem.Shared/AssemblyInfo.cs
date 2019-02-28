@@ -13,8 +13,8 @@ using System.Runtime.InteropServices;
 #endif
 #endregion AssemblyConfiguration
 [assembly: AssemblyCompany("www.gallimathias.de")]
-[assembly: AssemblyProduct("Command Management System-alpha2")]
-[assembly: AssemblyCopyright("Copyright 2018 gallimathias. Licensed under Apache License Version 2.0")]
+[assembly: AssemblyProduct("Command Management System-alpha3")]
+[assembly: AssemblyCopyright("Copyright 2019 gallimathias. Licensed under Apache License Version 2.0")]
 
 [assembly: ComVisible(false)]
 
@@ -244,7 +244,7 @@ using System.Runtime.InteropServices;
       same "printed page" as the copyright notice for easier
       identification within third-party archives.
 
-   Copyright 2017 Maximilian Krüger 
+   Copyright 2019 Maximilian Krüger 
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.

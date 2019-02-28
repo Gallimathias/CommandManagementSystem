@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>CommandManagementSystem</id>
-    <version>3.0.0-alpha2</version>
+    <version>3.0.0-alpha3</version>
     <title>Command Management System</title>
     <authors>Marcus Aurelius (CLattenzaun.de)</authors>
     <owners>gallimathias</owners>
@@ -21,11 +21,8 @@ Supported platforms:
 * .NET Standard 2.0</description>
     <releaseNotes>This is a nightly build that is actively under development. It should not be used for production systems. More detailed information can be found on GitHub.
 New Features:
- * Implement Alias function
- * Add Generics to DefaultManager
- * Add list of Command tags
- * Fix some bugs</releaseNotes>
-    <copyright>Copyright 2018 gallimathias</copyright>
+ * You can now use the StringCommandManager and the StringCommands. With a String Command the type or method name is used automaticly as tag. </releaseNotes>
+    <copyright>Copyright 2019 gallimathias</copyright>
     <tags>command commands management system framework order dependencies container comas CoMaS COMAS dependency injection control dispatch dispatcher</tags>
   </metadata>
   <files>
