@@ -1,5 +1,14 @@
 # Command Management System
 
+__Current Version:__ 3.0.0-alpha3
+
+> This is a nightly build that is actively under development. It should not be used for production systems. More detailed information can be found on GitHub.
+
+## New Features
+ * __Implement StringCommands:__ You can now use the StringCommandManager and the StringCommands. With a String Command the type or method name is used automaticly as tag.
+
+---
+
 __Current Version:__ 3.0.0-alpha2
 
     This is a nightly build that is actively under development. It should not be used for production systems. More detailed information can be found on GitHub.

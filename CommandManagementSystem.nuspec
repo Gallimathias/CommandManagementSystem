@@ -7,7 +7,7 @@
     <authors>Marcus Aurelius (CLattenzaun.de)</authors>
     <owners>gallimathias</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <licenseUrl>https://github.com/Gallimathias/CommandManagementSystem/blob/master/LICENSE</licenseUrl>
+    <license type="file">LICENSE</license>
     <projectUrl>https://github.com/Gallimathias/CommandManagementSystem</projectUrl>
     <iconUrl>http://www.gallimathias.de/images/CoMaS.png</iconUrl>
     <summary>The Command Management System supports the implementation of methods and classes as executable commands or actions.</summary>
