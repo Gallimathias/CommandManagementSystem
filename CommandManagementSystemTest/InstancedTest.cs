@@ -32,5 +32,16 @@ namespace CommandManagementSystemTest
                 Assert.AreEqual(2, manager.Dispatch("t", ""));
             }
         }
+
+        [TestMethod]
+        public void MethodTest()
+        {
+            var manager = new Manager();
+
+            for (int i = 0; i < 10; i++)
+            {
+                Assert.AreEqual(14, manager.Dispatch("Default", ""));
+            }
+        }
     }
 }

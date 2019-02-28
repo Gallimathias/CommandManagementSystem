@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28621.142
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Command Management System_net45-net46", "Command Management System_net45-net46\Command Management System_net45-net46.csproj", "{D20367E9-5AF9-4024-B22F-3AC6ACD8DD36}"
 EndProject
@@ -9,7 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Command Management System",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandManagementSystemTest", "CommandManagementSystemTest\CommandManagementSystemTest.csproj", "{E38F78CB-F376-4202-8705-C3318FAC0933}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CommandManagementSystem.Shared", "CommandManagementSystem.Shared\CommandManagementSystem.Shared.shproj", "{0C6D4F88-FFCD-4B5A-A0CA-C836EC9B9345}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		CommandManagementSystem.Shared\CommandManagementSystem.Shared.projitems*{0c6d4f88-ffcd-4b5a-a0ca-c836ec9b9345}*SharedItemsImports = 13
+		CommandManagementSystem.Shared\CommandManagementSystem.Shared.projitems*{d20367e9-5af9-4024-b22f-3ac6acd8dd36}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

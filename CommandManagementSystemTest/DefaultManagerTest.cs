@@ -1,4 +1,5 @@
 ﻿using CommandManagementSystem;
+using CommandManagementSystem.Attributes;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -24,5 +25,39 @@ namespace CommandManagementSystemTest
                 Assert.AreEqual(2, manager.Dispatch("t", ""));
             }
         }
+
+        [TestMethod]
+        public void DefaultStringManagerInstance()
+        {
+            var manager = new StringCommandManager<string, int>("CommandManagementSystemTest");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Assert.AreEqual(1, manager.Dispatch("StringComplex", ""));
+                Assert.AreEqual(2, manager.Dispatch("StringComplex", ""));
+            }
+        }
+
+        [TestMethod]
+        public void DefaultManagerMethod()
+        {
+            var manager = new DefaultCommandManager<string, int>("CommandManagementSystemTest");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Assert.AreEqual(14, manager.Dispatch("Default", ""));
+            }
+        }
+
+        [TestMethod]
+        public void DefaultStringManagerMethod()
+        {
+            var manager = new StringCommandManager<string, int>("CommandManagementSystemTest");
+
+            for (int i = 0; i < 10; i++)
+            {
+                Assert.AreEqual(14, manager.Dispatch("DefaultString", ""));
+            }
+        }        
     }
 }
